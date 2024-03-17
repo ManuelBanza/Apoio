@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Category Counters</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax value as needed */
+            gap: 10px;
+            padding: 10px;
+            justify-content: center;
+        }
+        .category {
+            background: #f2ead7;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            color: #1e456a;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .category img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .counter {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .container > div:nth-child(-n+6) { 
+            grid-column: span 2; 
+        }
+        .container > div:nth-child(n+7) { 
+            grid-column: span 1; 
+        }
+        @media (max-width: 768px) {
+            .container > div:nth-child(-n+6) { 
+                grid-column: span 1; 
+            }
+        }
+    </style>
+    
+
+    
+</head>
+<body>
+
+    </script>
+</body>
+</html>
+
+
+
+<div class="container">
+    <!-- Baby/Toddler Supported -->
+    <div class="category" onclick="incrementCounter('counter-baby-toddler-supported')">
+        <img src="svg-export/Baby-Toddler Supported.svg" alt="Baby/Toddler Supported">
+        <div id="counter-baby-toddler-supported" class="counter">0</div>
+        <div>Baby/Toddler Supported</div>
+    </div>
+
+    <!-- Baby/Toddler Walking Independently -->
+    <div class="category" onclick="incrementCounter('counter-baby-toddler-walking')">
+        <img src="svg-export/Baby-Todler Walking-Indepently.svg" alt="Baby/Todler Walking Independently">
+        <div id="counter-baby-toddler-walking" class="counter">0</div>
+        <div>Baby/Toddler Walking Independently</div>
+    </div>
+
+    <!-- Baby/Toddler Being Carried -->
+    <div class="category" onclick="incrementCounter('counter-baby-toddler-carried')">
+        <img src="svg-export/Baby-Todler Being Carried.svg" alt="Baby/Todler Being Carried">
+        <div id="counter-baby-toddler-carried" class="counter">0</div>
+        <div>Baby/Toddler Being Carried</div>
+    </div>
+
+    <!-- Up to 5 Being Carried -->
+    <div class="category" onclick="incrementCounter('counter-up-to-5-carried')">
+        <img src="svg-export/Up to 5 Being Carried.svg" alt="Up to 5 Being Carried">
+        <div id="counter-up-to-5-carried" class="counter">0</div>
+        <div>Up to 5 Being Carried</div>
+    </div>
+
+    <!-- Up to 5 Supported -->
+    <div class="category" onclick="incrementCounter('counter-up-to-5-supported')">
+        <img src="svg-export/Up to 5 Supported.svg" alt="Up to 5 Supported">
+        <div id="counter-up-to-5-supported" class="counter">0</div>
+        <div>Up to 5 Supported</div>
+    </div>
+
+    <!-- Up to 5 Walking Independently -->
+    <div class="category" onclick="incrementCounter('counter-up-to-5-walking')">
+        <img src="svg-export/Up to 5 Walking Independently.svg" alt="Up to 5 Walking Independently">
+        <div id="counter-up-to-5-walking" class="counter">0</div>
+        <div>Up to 5 Walking Independently</div>
+    </div>
+
+    <!-- Male 5-14 -->
+    <div class="category" onclick="incrementCounter('counter-male-5-14')">
+        <img src="svg-export/Male 5-14.svg" alt="Male 5-14">
+        <div id="counter-male-5-14" class="counter">0</div>
+        <div>Male 5-14</div>
+    </div>
+
+    <!-- Female 5-14 -->
+    <div class="category" onclick="incrementCounter('counter-female-5-14')">
+        <img src="svg-export/Female 5-14.svg" alt="Female 5-14">
+        <div id="counter-female-5-14" class="counter">0</div>
+        <div>Female 5-14</div>
+    </div>
+
+    <!-- Male 15-24 -->
+    <div class="category" onclick="incrementCounter('counter-male-15-24')">
+        <img src="svg-export/Male 15-24.svg" alt="Male 15-24">
+        <div id="counter-male-15-24" class="counter">0</div>
+        <div>Male 15-24</div>
+    </div>
+
+    <!-- Female 15-24 -->
+    <div class="category" onclick="incrementCounter('counter-female-15-24')">
+        <img src="svg-export/Female 15-24.svg" alt="Female 15-24">
+        <div id="counter-female-15-24" class="counter">0</div>
+        <div>Female 15-24</div>
+    </div>
+
+    <!-- Male 25-64 -->
+    <div class="category" onclick="incrementCounter('counter-male-25-64')">
+        <img src="svg-export/Male 25-64.svg" alt="Male 25-64">
+        <div id="counter-male-25-64" class="counter">0</div>
+        <div>Male 25-64</div>
+    </div>
+
+    <!-- Female 25-64 -->
+    <div class="category" onclick="incrementCounter('counter-female-25-64')">
+        <img src="svg-export/Female 25-64.svg" alt="Female 25-64">
+        <div id="counter-female-25-64" class="counter">0</div>
+        <div>Female 25-64</div>
+    </div>
+
+    <!-- Male 65+ -->
+    <div class="category" onclick="incrementCounter('counter-male-65-plus')">
+        <img src="svg-export/Male 65+.svg" alt="Male 65+">
+        <div id="counter-male-65-plus" class="counter">0</div>
+        <div>Male 65+</div>
+    </div>
+
+    <!-- Female 65+ -->
+    <div class="category" onclick="incrementCounter('counter-female-65-plus')">
+        <img src="svg-export/Female 65+.svg" alt="Female 65+">
+        <div id="counter-female-65-plus" class="counter">0</div>
+        <div>Female 65+</div>
+    </div>
+
+
+</div>
+
+<script>
+    function incrementCounter(counterId) {
+        var counterElement = document.getElementById(counterId);
+        var currentCount = parseInt(counterElement.textContent, 10);
+        counterElement.textContent = currentCount + 1;
+    }
+</script>
+
+</body>
+</html>
