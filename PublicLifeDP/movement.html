@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Category Counters</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust minmax value as needed */
+            gap: 10px; /* Gap between categories */
+            padding: 10px; /* Padding around the container */
+            justify-content: center;
+        }
+        .category {
+            background: #f2ead7;
+            border-radius: 5px;
+            padding: 15px; /* Default padding for categories */
+            text-align: center;
+            color: #1e456a;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1em; /* Reduced font size for smaller categories */
+        }
+        .category img {
+            max-width: 100%; /* Adjusted image width */
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .counter {
+            font-size: 1.2em; /* Reduced font size of the counter */
+            margin-bottom: 3px; /* Reduced spacing below the counter */
+        }
+        .small-category {
+            padding: 5px; /* Adjusted padding for the first six categories */
+            background: #f2ead7;
+            border-radius: 3px;
+            text-align: center;
+            color: #1e456a;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 0.6em; /* Reduced font size for smaller categories */
+        }
+        .small-category img {
+            max-width: 70%; /* Adjusted image width */
+            height: auto;
+            margin-bottom: 10px;
+        }
+        @media (min-width: 375px) { /* Adjusted minimum width for iPhone screens */
+            .container {
+                grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+            }
+        }
+        .sum-button {
+            background-color: #60BD7D;
+            border-radius: 5px;
+            padding: 15px; /* Same padding as categories */
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            font-size: 1em; /* Same font size as categories */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .sum-button span {
+            margin-top: 5px; /* Adjust spacing between icon and text */
+        }
+        @media (min-width: 375px) { /* Adjusted minimum width for iPhone screens */
+            .container {
+                grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+            }
+        }
+
+        /* Position the sum button */
+        .container {
+            position: relative;
+        }
+        .sum-button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-bottom: 80px; /* Adjust as needed */
+        }
+    </style>
+    
+    
+
+    
+
+    
+
+    
+</head>
+<body>
+
+    </script>
+</body>
+</html>
+
+
+
+<div class="container">
+    <!-- Baby/Toddler Supported -->
+    <div class="small-category" onclick="incrementCounter('counter-baby-toddler-supported')">
+        <img src="svg-export/Baby-Toddler Supported.svg" alt="Baby/Toddler Supported">
+        <div id="counter-baby-toddler-supported" class="counter">0</div>
+        <div>Baby/Toddler Supported</div>
+    </div>
+
+    <!-- Baby/Toddler Walking Independently -->
+    <div class="small-category" onclick="incrementCounter('counter-baby-toddler-walking')">
+        <img src="svg-export/Baby-Todler Walking-Indepently.svg" alt="Baby/Todler Walking Independently">
+        <div id="counter-baby-toddler-walking" class="counter">0</div>
+        <div>Baby/Toddler Walking Independently</div>
+    </div>
+
+    <!-- Baby/Toddler Being Carried -->
+    <div class="small-category" onclick="incrementCounter('counter-baby-toddler-carried')">
+        <img src="svg-export/Baby-Todler Being Carried.svg" alt="Baby/Todler Being Carried">
+        <div id="counter-baby-toddler-carried" class="counter">0</div>
+        <div>Baby/Toddler Being Carried</div>
+    </div>
+
+    <!-- Up to 5 Being Carried -->
+    <div class="small-category" onclick="incrementCounter('counter-up-to-5-carried')">
+        <img src="svg-export/Up to 5 Being Carried.svg" alt="Up to 5 Being Carried">
+        <div id="counter-up-to-5-carried" class="counter">0</div>
+        <div>Up to 5 Being Carried</div>
+    </div>
+
+    <!-- Up to 5 Supported -->
+    <div class="small-category" onclick="incrementCounter('counter-up-to-5-supported')">
+        <img src="svg-export/Up to 5 Supported.svg" alt="Up to 5 Supported">
+        <div id="counter-up-to-5-supported" class="counter">0</div>
+        <div>Up to 5 Supported</div>
+    </div>
+
+    <!-- Up to 5 Walking Independently -->
+    <div class="small-category" onclick="incrementCounter('counter-up-to-5-walking')">
+        <img src="svg-export/Up to 5 Walking Independently.svg" alt="Up to 5 Walking Independently">
+        <div id="counter-up-to-5-walking" class="counter">0</div>
+        <div>Up to 5 Walking Independently</div>
+    </div>
+
+    <!-- Male 5-14 -->
+    <div class="category" onclick="incrementCounter('counter-male-5-14')">
+        <img src="svg-export/Male 5-14.svg" alt="Male 5-14">
+        <div id="counter-male-5-14" class="counter">0</div>
+        <div>Male 5-14</div>
+    </div>
+
+    <!-- Female 5-14 -->
+    <div class="category" onclick="incrementCounter('counter-female-5-14')">
+        <img src="svg-export/Female 5-14.svg" alt="Female 5-14">
+        <div id="counter-female-5-14" class="counter">0</div>
+        <div>Female 5-14</div>
+    </div>
+
+    <!-- Male 15-24 -->
+    <div class="category" onclick="incrementCounter('counter-male-15-24')">
+        <img src="svg-export/Male 15-24.svg" alt="Male 15-24">
+        <div id="counter-male-15-24" class="counter">0</div>
+        <div>Male 15-24</div>
+    </div>
+
+    <!-- Female 15-24 -->
+    <div class="category" onclick="incrementCounter('counter-female-15-24')">
+        <img src="svg-export/Female 15-24.svg" alt="Female 15-24">
+        <div id="counter-female-15-24" class="counter">0</div>
+        <div>Female 15-24</div>
+    </div>
+
+    <!-- Male 25-64 -->
+    <div class="category" onclick="incrementCounter('counter-male-25-64')">
+        <img src="svg-export/Male 25-64.svg" alt="Male 25-64">
+        <div id="counter-male-25-64" class="counter">0</div>
+        <div>Male 25-64</div>
+    </div>
+
+    <!-- Female 25-64 -->
+    <div class="category" onclick="incrementCounter('counter-female-25-64')">
+        <img src="svg-export/Female 25-64.svg" alt="Female 25-64">
+        <div id="counter-female-25-64" class="counter">0</div>
+        <div>Female 25-64</div>
+    </div>
+
+    <!-- Male 65+ -->
+    <div class="category" onclick="incrementCounter('counter-male-65-plus')">
+        <img src="svg-export/Male 65+.svg" alt="Male 65+">
+        <div id="counter-male-65-plus" class="counter">0</div>
+        <div>Male 65+</div>
+    </div>
+
+    <!-- Female 65+ -->
+    <div class="category" onclick="incrementCounter('counter-female-65-plus')">
+        <img src="svg-export/Female 65+.svg" alt="Female 65+">
+        <div id="counter-female-65-plus" class="counter">0</div>
+        <div>Female 65+</div>
+    </div>
+    
+
+
+</div>
+
+<!-- Button to sum all counter values -->
+<div class="sum-button" id="sumButton">
+    <span id="sumValue">0</span>
+    <span>Total Count</span>
+</div>
+
+<script>
+    function incrementCounter(counterId) {
+        var counterElement = document.getElementById(counterId);
+        var currentCount = parseInt(counterElement.textContent, 10);
+        counterElement.textContent = currentCount + 1;
+        updateSum();
+    }
+
+    function updateSum() {
+        var counters = document.querySelectorAll('.counter');
+        var sum = 0;
+        counters.forEach(function(counter) {
+            sum += parseInt(counter.textContent);
+        });
+        document.getElementById("sumValue").textContent = sum;
+    }
+
+    // Call updateSum initially to set the initial value
+    updateSum();
+</script>
+
+</body>
+</html>
