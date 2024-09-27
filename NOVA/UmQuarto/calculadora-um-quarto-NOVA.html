@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadoras de Preços</title>
+    <script>
+        // Função para calcular o preço do quarto
+        function calcularPrecoQuarto() {
+            var valorMax = 340;
+            var valorMin = 170;
+
+            var m2 = parseFloat(document.getElementById("m2").value);
+            var conforto = parseFloat(document.getElementById("conforto").value);
+            var isPrivada = document.getElementById("isPrivada").value;
+            var janela = document.getElementById("janela").value;
+
+            var pesoM2 = 0.5;
+            var pesoConforto = 0.7;
+            var pesoIsPrivada = 1.3;
+            var pesoJanela = 1;
+
+            var m2Max = 14;
+            var confortoMax = 10;
+            var isPrivadaMax = "S";
+            var janelaMax = "S";
+
+            var scoreM2 = (m2 >= m2Max) ? pesoM2 : ((m2 - 8) / (m2Max - 8)) * pesoM2;
+            var scoreConforto = (conforto - 1) / (confortoMax - 1) * pesoConforto;
+            var scoreIsPrivada = (isPrivada === isPrivadaMax ? pesoIsPrivada : 0);
+            var scoreJanela = (janela === janelaMax ? pesoJanela : 0);
+
+            var scoreTotal = scoreM2 + scoreConforto + scoreIsPrivada + scoreJanela;
+            var scoreMax = pesoM2 + pesoConforto + pesoIsPrivada + pesoJanela;
+
+            var precoCalculado = valorMin + ((valorMax - valorMin) * (scoreTotal / scoreMax));
+
+            precoCalculado = Math.max(valorMin, Math.min(precoCalculado, valorMax));
+
+            document.getElementById("resultadoQuarto").innerHTML = 
+                "Recomendamos que o valor a cobrar pelo quarto seja " + precoCalculado.toFixed(2) + "€ por mês.";
+
+            return precoCalculado;
+        }
+
+        // Função para calcular o preço dos serviços prestados
+        function calcularPrecoServicos() {
+            var despesas = 30;
+            var wifi = 10;
+
+            var limpeza = parseFloat(document.getElementById("limpeza").value) || 0;
+            var refeicoes = parseFloat(document.getElementById("refeicoes").value) || 0;
+
+            var totalServicos = despesas + wifi + limpeza + refeicoes;
+
+            document.getElementById("resultadoServicos").innerHTML = 
+                "O valor a cobrar pelos serviços prestados é " + totalServicos.toFixed(2) + "€ por mês.";
+
+            return totalServicos;
+        }
+
+        // Função para calcular o valor total recomendado
+        function calcularTotal() {
+            var precoQuarto = calcularPrecoQuarto();
+            var precoServicos = calcularPrecoServicos();
+            var totalRecomendado = precoQuarto + precoServicos;
+
+            document.getElementById("resultadoTotal").innerHTML = 
+                "O valor total recomendado é de " + totalRecomendado.toFixed(2) + "€ por mês.";
+        }
+    </script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .calculadora {
+            width: 45%;
+        }
+        #resultadoTotal {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .centered {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="centered">Calculadoras de Preços</h1>
+
+    <div class="container">
+        <!-- Calculadora de Preço de Quarto -->
+        <div class="calculadora">
+            <h2>Calculadora de Preço de Quarto</h2>
+
+            <form>
+                <label for="m2">m² do Quarto (8 a 14):</label><br>
+                <input type="number" id="m2" name="m2" min="8" max="14" step="1" required><br><br>
+
+                <label for="conforto">Conforto (1 a 10):</label><br>
+                <input type="number" id="conforto" name="conforto" min="1" max="10" step="1" required><br><br>
+
+                <label for="isPrivada">IS Privada (S/N):</label><br>
+                <select id="isPrivada" name="isPrivada" required>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select><br><br>
+
+                <label for="janela">Janela (S/N):</label><br>
+                <select id="janela" name="janela" required>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select><br><br>
+
+                <button type="button" onclick="calcularPrecoQuarto()">Calcular Preço Quarto</button>
+            </form>
+
+            <h3 id="resultadoQuarto"></h3>
+        </div>
+
+        <!-- Calculadora de Serviços Prestados -->
+        <div class="calculadora">
+            <h2>Calculadora de Serviços Prestados</h2>
+
+            <form>
+                <label>Despesas (água, eletricidade, gás): 30€</label><br><br>
+                <label>Wi-Fi: 10€</label><br><br>
+
+                <label for="limpeza">Limpeza do quarto:</label><br>
+                <input type="number" id="limpeza" name="limpeza" step="1"><br><br>
+
+                <label for="refeicoes">Refeições:</label><br>
+                <input type="number" id="refeicoes" name="refeicoes" step="1"><br><br>
+
+                <button type="button" onclick="calcularPrecoServicos()">Calcular Preço Serviços Prestados</button>
+            </form>
+
+            <h3 id="resultadoServicos"></h3>
+        </div>
+    </div>
+
+    <!-- Resultado Final -->
+    <h2 id="resultadoTotal"></h2>
+    <div class="centered">
+        <button type="button" onclick="calcularTotal()">Calcular Valor Total Recomendado</button>
+    </div>
+</body>
+</html>
