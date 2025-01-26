@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Preços</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 90%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            text-align: left;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        small {
+            font-size: 0.8rem;
+            color: #666;
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h3, h2 {
+            margin-top: 10px;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <script>
+        // Ajustar o intervalo de área baseado em "partilhado" ou "não partilhado"
+        function ajustarIntervaloArea() {
+            var partilhado = document.getElementById("partilhado").value;
+            var areaInput = document.getElementById("m2");
+
+            if (partilhado === "S") {
+                areaInput.min = 12;
+                areaInput.max = 20;
+                areaInput.placeholder = "Área entre 12m² e 20m²";
+            } else {
+                areaInput.min = 8;
+                areaInput.max = 14;
+                areaInput.placeholder = "Área entre 8m² e 14m²";
+            }
+
+            areaInput.value = ""; // Resetar valor para evitar valores fora do intervalo permitido
+        }
+
+        // Obter o teto máximo por concelho
+        function getValorMaximoPorConcelho(concelho) {
+            const valoresMaximos = {
+                "Alcochete": 191,
+                "Almada": 235,
+                "Amadora": 235,
+                "Barreiro": 235,
+                "Cascais": 309,
+                "Lisboa": 353,
+                "Loures": 235,
+                "Mafra": 191,
+                "Moita": 191,
+                "Montijo": 191,
+                "Odivelas": 235,
+                "Oeiras": 309,
+                "Palmela": 191,
+                "Seixal": 235,
+                "Sesimbra": 191,
+                "Setúbal": 191,
+                "Sintra": 235,
+                "Vila Franca de Xira": 191
+            };
+
+            return valoresMaximos[concelho] || 0; // Retorna 0 se o concelho não for encontrado
+        }
+
+        // Calcular o preço final do quarto
+        function calcularPrecoQuarto() {
+            var partilhado = document.getElementById("partilhado").value;
+            var concelho = document.getElementById("concelho").value;
+            var m2 = parseFloat(document.getElementById("m2").value);
+            var isPrivada = document.getElementById("isPrivada").value;
+            var conforto = parseFloat(document.getElementById("conforto").value);
+
+            var valorMax = getValorMaximoPorConcelho(concelho);
+            if (partilhado === "S") {
+                valorMax *= 0.80;
+            }
+
+            var valorMin = valorMax * 0.60;
+
+            const pesoArea = 0.29;
+            const pesoConforto = 0.29;
+            const pesoIsPrivada = 0.43;
+
+            var areaMin = partilhado === "S" ? 12 : 8;
+            var areaMax = partilhado === "S" ? 20 : 14;
+
+            var ajusteArea = ((m2 - areaMin) / (areaMax - areaMin)) * (valorMax * pesoArea);
+            ajusteArea = Math.max(0, Math.min(ajusteArea, valorMax * pesoArea));
+
+            var contribuicaoConforto = (conforto / 10) * (valorMax * pesoConforto);
+            var contribuicaoIsPrivada = isPrivada === "S" ? (valorMax * pesoIsPrivada) : 0;
+
+            var precoCalculado = ajusteArea + contribuicaoConforto + contribuicaoIsPrivada;
+            precoCalculado = Math.min(precoCalculado, valorMax);
+            precoCalculado = Math.max(precoCalculado, valorMin);
+
+            document.getElementById("resultadoQuarto").innerHTML =
+                "Recomendamos que o valor a cobrar pelo quarto seja " + precoCalculado.toFixed(2) + "€ por mês.";
+
+            return precoCalculado;
+        }
+
+        function calcularTotal() {
+            var precoQuarto = calcularPrecoQuarto();
+            document.getElementById("resultadoTotal").innerHTML =
+                "O valor total recomendado é de " + precoQuarto.toFixed(2) + "€ por mês.";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.redeumquarto.pt/images/logo-rede-header.svg" alt="Logo Rede Um Quarto" class="logo">
+        <h1>Calculadora de Preço de Quartos</h1>
+
+        <form>
+            <label for="partilhado">O quarto é partilhado? (S/N):</label>
+            <select id="partilhado" name="partilhado" required onchange="ajustarIntervaloArea()">
+                <option value="N">Não</option>
+                <option value="S">Sim</option>
+            </select>
+
+            <label for="concelho">Concelho:</label>
+            <select id="concelho" name="concelho" required>
+                <option value="Alcochete">Alcochete</option>
+                <option value="Almada">Almada</option>
+                <option value="Amadora">Amadora</option>
+                <option value="Barreiro">Barreiro</option>
+                <option value="Cascais">Cascais</option>
+                <option value="Lisboa">Lisboa</option>
+                <option value="Loures">Loures</option>
+                <option value="Mafra">Mafra</option>
+                <option value="Moita">Moita</option>
+                <option value="Montijo">Montijo</option>
+                <option value="Odivelas">Odivelas</option>
+                <option value="Oeiras">Oeiras</option>
+                <option value="Palmela">Palmela</option>
+                <option value="Seixal">Seixal</option>
+                <option value="Sesimbra">Sesimbra</option>
+                <option value="Setúbal">Setúbal</option>
+                <option value="Sintra">Sintra</option>
+                <option value="Vila Franca de Xira">Vila Franca de Xira</option>
+            </select>
+
+            <label for="m2">Área (m²) *</label>
+            <small>* Quartos single: considerar de 8m² a 14m². Quartos partilhados: considerar de 12m² a 20m².</small>
+            <input type="number" id="m2" name="m2" min="8" max="14" step="1" placeholder="Área entre 8m² e 14m²" required>
+
+            <label for="isPrivada">Casa de banho exclusiva? (S/N):</label>
+            <select id="isPrivada" name="isPrivada" required>
+                <option value="S">Sim</option>
+                <option value="N">Não</option>
+            </select>
+
+            <label for="conforto">Conforto (0 a 10) **:</label>
+            <small>** Considere conforto térmico, estado de conservação, decoração e exposição solar.</small>
+            <input type="number" id="conforto" name="conforto" min="0" max="10" step="1" required>
+
+            <button type="button" onclick="calcularTotal()">Calcular Preço</button>
+        </form>
+
+        <h3 id="resultadoQuarto"></h3>
+        <h2 id="resultadoTotal"></h2>
+    </div>
+</body>
+</html>
