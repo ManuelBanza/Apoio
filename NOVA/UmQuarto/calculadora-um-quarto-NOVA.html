@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Preços</title>
+    <script>
+        // Ajustar o intervalo de área baseado em "partilhado" ou "não partilhado"
+        function ajustarIntervaloArea() {
+            var partilhado = document.getElementById("partilhado").value;
+            var areaInput = document.getElementById("m2");
+
+            if (partilhado === "S") {
+                areaInput.min = 12;
+                areaInput.max = 20;
+                areaInput.placeholder = "Área entre 12m² e 20m²";
+            } else {
+                areaInput.min = 8;
+                areaInput.max = 14;
+                areaInput.placeholder = "Área entre 8m² e 14m²";
+            }
+
+            areaInput.value = ""; // Resetar valor para evitar valores fora do intervalo permitido
+        }
+
+        // Obter o teto máximo por concelho
+        function getValorMaximoPorConcelho(concelho) {
+            const valoresMaximos = {
+                "Alcochete": 191,
+                "Almada": 235,
+                "Amadora": 235,
+                "Barreiro": 235,
+                "Cascais": 309,
+                "Lisboa": 353,
+                "Loures": 235,
+                "Mafra": 191,
+                "Moita": 191,
+                "Montijo": 191,
+                "Odivelas": 235,
+                "Oeiras": 309,
+                "Palmela": 191,
+                "Seixal": 235,
+                "Sesimbra": 191,
+                "Setúbal": 191,
+                "Sintra": 235,
+                "Vila Franca de Xira": 191
+            };
+
+            return valoresMaximos[concelho] || 0; // Retorna 0 se o concelho não for encontrado
+        }
+
+        // Calcular o preço final do quarto
+        function calcularPrecoQuarto() {
+            // Obter os valores das respostas
+            var partilhado = document.getElementById("partilhado").value;
+            var concelho = document.getElementById("concelho").value;
+            var m2 = parseFloat(document.getElementById("m2").value);
+            var isPrivada = document.getElementById("isPrivada").value;
+            var conforto = parseFloat(document.getElementById("conforto").value);
+
+            // Obter o valor máximo por concelho
+            var valorMax = getValorMaximoPorConcelho(concelho);
+
+            // Aplicar redução para quartos partilhados
+            if (partilhado === "S") {
+                valorMax *= 0.80; // Reduz teto máximo em 20%
+            }
+
+            // Calcular o valor mínimo permitido (40% de desvalorização do teto ajustado)
+            var valorMin = valorMax * 0.60;
+
+            // Pesos
+            const pesoArea = 0.29; // Peso da área
+            const pesoConforto = 0.29; // Peso do conforto
+            const pesoIsPrivada = 0.43; // Peso da casa de banho exclusiva
+
+            // Limites de área
+            var areaMin = partilhado === "S" ? 12 : 8;
+            var areaMax = partilhado === "S" ? 20 : 14;
+
+            // Calcular ajuste da área proporcional
+            var ajusteArea = ((m2 - areaMin) / (areaMax - areaMin)) * (valorMax * pesoArea);
+            ajusteArea = Math.max(0, Math.min(ajusteArea, valorMax * pesoArea)); // Garantir dentro do intervalo
+
+            // Penalizações e contribuições
+            var contribuicaoConforto = (conforto / 10) * (valorMax * pesoConforto);
+            var contribuicaoIsPrivada = isPrivada === "S" ? (valorMax * pesoIsPrivada) : 0;
+
+            // Garantir que os ajustes e contribuições somem no máximo o teto ajustado
+            var precoCalculado = ajusteArea + contribuicaoConforto + contribuicaoIsPrivada;
+            precoCalculado = Math.min(precoCalculado, valorMax); // Garantir que não ultrapasse o teto ajustado
+
+            // Garantir que o preço não seja menor que o valor mínimo permitido
+            precoCalculado = Math.max(precoCalculado, valorMin);
+
+            // Exibir o resultado final
+            document.getElementById("resultadoQuarto").innerHTML =
+                "Recomendamos que o valor a cobrar pelo quarto seja " + precoCalculado.toFixed(2) + "€ por mês.";
+
+            return precoCalculado;
+        }
+
+        // Calcular o preço total, incluindo apoios adicionais, se necessário
+        function calcularTotal() {
+            var precoQuarto = calcularPrecoQuarto();
+            document.getElementById("resultadoTotal").innerHTML =
+                "O valor total recomendado é de " + precoQuarto.toFixed(2) + "€ por mês.";
+        }
+    </script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .calculadora {
+            width: 45%;
+        }
+        #resultadoTotal {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .centered {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="centered">Calculadora de Preço de Quartos</h1>
+
+    <div class="container">
+        <div class="calculadora">
+            <h2>Preço do Quarto</h2>
+
+            <form>
+                <label for="partilhado">O quarto é partilhado? (S/N):</label><br>
+                <select id="partilhado" name="partilhado" required onchange="ajustarIntervaloArea()">
+                    <option value="N">Não</option>
+                    <option value="S">Sim</option>
+                </select><br><br>
+
+                <label for="concelho">Concelho:</label><br>
+                <select id="concelho" name="concelho" required>
+                    <option value="Alcochete">Alcochete</option>
+                    <option value="Almada">Almada</option>
+                    <option value="Amadora">Amadora</option>
+                    <option value="Barreiro">Barreiro</option>
+                    <option value="Cascais">Cascais</option>
+                    <option value="Lisboa">Lisboa</option>
+                    <option value="Loures">Loures</option>
+                    <option value="Mafra">Mafra</option>
+                    <option value="Moita">Moita</option>
+                    <option value="Montijo">Montijo</option>
+                    <option value="Odivelas">Odivelas</option>
+                    <option value="Oeiras">Oeiras</option>
+                    <option value="Palmela">Palmela</option>
+                    <option value="Seixal">Seixal</option>
+                    <option value="Sesimbra">Sesimbra</option>
+                    <option value="Setúbal">Setúbal</option>
+                    <option value="Sintra">Sintra</option>
+                    <option value="Vila Franca de Xira">Vila Franca de Xira</option>
+                </select><br><br>
+
+                <label for="m2">Área (m²) *</label><br>
+                <small>* Quartos single: considerar de 8m² a 14m². Quartos partilhados: considerar de 12m² a 20m².</small><br>
+                <input type="number" id="m2" name="m2" min="8" max="14" step="1" placeholder="Área entre 8m² e 14m²" required><br><br>
+
+                <label for="isPrivada">Casa de banho exclusiva? (S/N):</label><br>
+                <select id="isPrivada" name="isPrivada" required>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
+                </select><br><br>
+
+                <label for="conforto">Conforto (0 a 10) **:</label><br>
+                <small>** Considere conforto térmico, estado de conservação, decoração e exposição solar.</small><br>
+                <input type="number" id="conforto" name="conforto" min="0" max="10" step="1" required><br><br>
+
+                <button type="button" onclick="calcularTotal()">Calcular Preço</button>
+            </form>
+
+            <h3 id="resultadoQuarto"></h3>
+        </div>
+    </div>
+
+    <h2 id="resultadoTotal"></h2>
+</body>
+</html>
