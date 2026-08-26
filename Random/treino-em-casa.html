@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181916">
+  <title>Treino em Casa</title>
+  <style>
+    :root{--ink:#181916;--paper:#f3f1e9;--line:#cfcdc4;--lime:#c8f65b;--coral:#ff806d;--violet:#a795ff;--active:var(--lime)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}.wrap{max-width:1120px;margin:auto;padding:0 22px}.top{height:66px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-weight:900}.logo{display:flex;align-items:center;gap:9px}.mark{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff}.pill{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:8px 11px}.hero{padding:58px 0 42px;display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:end}.overline,.step{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.hero h1{font-size:clamp(50px,8vw,94px);line-height:.86;letter-spacing:-.07em;margin:13px 0 0}.hero h1 em{font-family:Georgia,serif;font-weight:400}.hero p{color:#62645d;line-height:1.55;margin:0}.step{margin:8px 0 14px;color:#70726b}.day-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:50px}.day-buttons button{min-height:94px;text-align:left;padding:17px;border:1px solid var(--ink);background:transparent;cursor:pointer;font-weight:900;font-size:22px;letter-spacing:-.04em}.day-buttons button span{display:block;font-size:10px;letter-spacing:.12em;margin-bottom:22px}.day-buttons button.active{background:var(--active)}.head{display:flex;align-items:end;justify-content:space-between;gap:25px;border-bottom:1px solid var(--line);padding-bottom:20px}.head h2{font-size:40px;letter-spacing:-.05em;margin:0 0 5px}.head p{margin:0;color:#666861}.filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.filters button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;cursor:pointer}.filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;padding:20px 0 50px}.card{border:1px solid var(--ink);background:#fbfaf5;display:flex;flex-direction:column}.visual{height:112px;background:var(--active);border-bottom:1px solid var(--ink);display:grid;place-items:center;position:relative}.play{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--ink);color:white;font-size:19px;text-decoration:none;padding-left:3px}.num{position:absolute;left:12px;top:10px;font-size:10px;font-weight:900}.body{padding:17px;display:flex;flex-direction:column;flex:1}.meta{display:flex;justify-content:space-between;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.body h3{font-size:22px;letter-spacing:-.04em;line-height:1.06;margin:20px 0 5px}.creator{font-size:12px;font-weight:800;color:#676962;margin:0}.note{font-size:13px;color:#676962;margin:17px 0 22px}.link{margin-top:auto;border-top:1px solid var(--line);padding-top:13px;color:inherit;text-decoration:none;font-size:13px;font-weight:900;display:flex;justify-content:space-between}.schedule{background:var(--ink);color:#fff;padding:20px 22px;margin-bottom:45px;display:flex;justify-content:space-between;gap:25px}.schedule span{color:#d0d0c9;font-size:13px}.schedule p{margin:0;color:#d0d0c9;font-size:13px;text-align:right}.empty{grid-column:1/-1;padding:35px;text-align:center;border:1px dashed var(--line)}footer{border-top:1px solid var(--line);padding:24px 0 30px;font-size:12px;color:#6b6c66;display:flex;justify-content:space-between}.hidden{display:none!important}
+    @media(max-width:720px){.wrap{padding:0 16px}.hero{grid-template-columns:1fr;padding:42px 0 32px;gap:23px}.hero h1{font-size:clamp(48px,15vw,72px)}.day-buttons{grid-template-columns:1fr;margin-bottom:38px}.day-buttons button{min-height:72px;display:flex;align-items:center;justify-content:space-between}.day-buttons button span{margin:0}.head{align-items:flex-start;flex-direction:column}.head h2{font-size:34px}.filters{justify-content:flex-start;flex-wrap:nowrap;max-width:100%;overflow:auto}.grid{grid-template-columns:1fr}.card{display:grid;grid-template-columns:96px 1fr}.visual{height:auto;border-bottom:0;border-right:1px solid var(--ink)}.body h3{margin-top:16px}.schedule{margin-left:0;margin-right:0;flex-direction:column}.schedule p{text-align:left}footer{flex-direction:column;gap:8px}.pill{font-size:0}.pill:after{content:'Só tapete';font-size:11px}}
+  </style>
+</head>
+<body>
+  <header class="top wrap"><div class="logo"><span class="mark">↗</span> Treino em Casa</div><span class="pill">✓ Só precisas de um tapete</span></header>
+  <main class="wrap">
+    <section class="hero"><div><div class="overline">A tua semana, sem desculpas</div><h1>Escolhe o dia.<br><em>Carrega no play.</em></h1></div><p>15 treinos completos para acompanhar em casa. Sem pesos, sem elásticos e sem perder tempo a escolher exercícios.</p></section>
+    <div class="step">01 — Escolhe o tipo de treino</div>
+    <nav class="day-buttons" aria-label="Tipo de treino">
+      <button class="active" data-day="forca" data-color="var(--lime)"><span>DIA 1</span>Força total</button>
+      <button data-day="superior" data-color="var(--coral)"><span>DIA 2</span>Peito &amp; costas</button>
+      <button data-day="cardio" data-color="var(--violet)"><span>DIA 3</span>Cardio total</button>
+    </nav>
+    <section class="head"><div><div class="step">02 — Escolhe o vídeo</div><h2 id="day-title">Força total</h2><p id="day-description">Corpo inteiro, estabilidade e força funcional.</p></div><div class="filters" aria-label="Dificuldade"><button class="active" data-level="Todos">Todos</button><button data-level="Iniciante">Iniciante</button><button data-level="Intermédio">Intermédio</button><button data-level="Avançado">Avançado</button></div></section>
+    <section class="grid" id="workouts"></section>
+    <aside class="schedule"><strong>Ritmo recomendado<br><span>Segunda · Quarta · Sexta</span></strong><p>Deixa pelo menos um dia de descanso entre sessões.<br>Escolhe apenas um vídeo por dia.</p></aside>
+  </main>
+  <footer class="wrap"><strong>Treino em Casa</strong><span>Ouve o teu corpo. Dor muscular é normal; dor articular não é.</span></footer>
+  <script>
+    const data={
+      forca:{title:'Força total',description:'Corpo inteiro, estabilidade e força funcional.',color:'var(--lime)',items:[
+        ['Full Body Strength','Juice & Toya',30,'Intermédio','Força e isometrias','9FBIaqr7TjQ'],
+        ['Bodyweight Strength','Juice & Toya',20,'Iniciante','Curto e progressivo','Q2cMMnUuKYQ'],
+        ['Strength & Fat Burn','Body Project',30,'Intermédio','Força sem saltos','EB2aMbQ2RGM'],
+        ['Full Body No Equipment','MadFit',20,'Intermédio','Dinâmico e sem repetições','Yu20j5jGHTc'],
+        ['Slow & On The Floor','growingannanas',30,'Iniciante','Lento, controlado e no tapete','Nlys2XC7J2M']]},
+      superior:{title:'Peito & costas',description:'Prioridade a peito, costas, braços e ombros.',color:'var(--coral)',items:[
+        ['Upper Body No Equipment','Rowan Row',30,'Intermédio','Peito, costas e braços','qOjXsxi2MG8'],
+        ['Upper Body Build Muscle','Oliver Sjöström',30,'Avançado','Foco em força superior','hsswpCzN6Ao'],
+        ['Upper Body Strength','Juice & Toya',20,'Intermédio','Compacto e exigente','0Yx_qbbzM0c'],
+        ['Arms, Chest & Back','HASfit',30,'Iniciante','Com adaptações fáceis','NYL1HaT9JfU'],
+        ['Upper Body & Core','MadFit',15,'Iniciante','Ideal para pouco tempo','ESkI_WR1qqc']]},
+      cardio:{title:'Cardio total',description:'Aumenta o ritmo cardíaco e o gasto energético.',color:'var(--violet)',items:[
+        ['Low Impact Full Body','MadFit',30,'Iniciante','Sem saltos, ideal para apartamento','tmEeghaHoz0'],
+        ['Full Body HIIT Beginner','Heather Robertson',25,'Iniciante','HIIT acessível e sem material','cbKkB3POqaY'],
+        ['No Repeats HIIT Cardio','Heather Robertson',30,'Intermédio','Opções de baixo impacto','kJ-3g9pzJdQ'],
+        ['Full Body Tabata','Juice & Toya',25,'Avançado','Rápido e intenso','6-KzqR4IMSc'],
+        ['Low Impact Cardio','MadFit',20,'Iniciante','Todo de pé e sem saltos','WjH-NQDeQ3o']]}}
+    let day='forca',level='Todos';
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function render(){const d=data[day];document.documentElement.style.setProperty('--active',d.color);document.querySelector('#day-title').textContent=d.title;document.querySelector('#day-description').textContent=d.description;const list=d.items.filter(x=>level==='Todos'||x[3]===level);document.querySelector('#workouts').innerHTML=list.length?list.map((x,i)=>{const url='https://www.youtube.com/watch?v='+encodeURIComponent(x[5]);return `<article class="card"><div class="visual"><span class="num">0${i+1}</span><a class="play" href="${url}" target="_blank" rel="noopener" aria-label="Abrir ${esc(x[0])}">▶</a></div><div class="body"><div class="meta"><span>${x[2]} min</span><span>${esc(x[3])}</span></div><h3>${esc(x[0])}</h3><p class="creator">${esc(x[1])}</p><p class="note">${esc(x[4])}</p><a class="link" href="${url}" target="_blank" rel="noopener">Ver treino completo <span>↗</span></a></div></article>`}).join(''):'<p class="empty">Não há vídeos deste nível neste dia. Experimenta outro filtro.</p>'}
+    document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{day=b.dataset.day;document.querySelectorAll('[data-day]').forEach(x=>x.classList.toggle('active',x===b));level='Todos';document.querySelectorAll('[data-level]').forEach(x=>x.classList.toggle('active',x.dataset.level==='Todos'));render()});
+    document.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{level=b.dataset.level;document.querySelectorAll('[data-level]').forEach(x=>x.classList.toggle('active',x===b));render()});render();
+  </script>
+</body>
+</html>
