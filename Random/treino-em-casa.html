@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181916">
+  <title>Treino em Casa</title>
+  <style>
+    :root{--ink:#181916;--paper:#f3f1e9;--line:#cfcdc4;--lime:#c8f65b;--coral:#ff806d;--violet:#a795ff;--active:var(--lime)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}.wrap{max-width:1120px;margin:auto;padding:0 22px}.top{height:66px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-weight:900}.logo{display:flex;align-items:center;gap:9px}.mark{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff}.pill{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:8px 11px}.hero{padding:58px 0 42px;display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:end}.overline,.step{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.hero h1{font-size:clamp(50px,8vw,94px);line-height:.86;letter-spacing:-.07em;margin:13px 0 0}.hero h1 em{font-family:Georgia,serif;font-weight:400}.hero p{color:#62645d;line-height:1.55;margin:0}.step{margin:8px 0 14px;color:#70726b}.day-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:50px}.day-buttons button{min-height:94px;text-align:left;padding:17px;border:1px solid var(--ink);background:transparent;cursor:pointer;font-weight:900;font-size:22px;letter-spacing:-.04em}.day-buttons button span{display:block;font-size:10px;letter-spacing:.12em;margin-bottom:22px}.day-buttons button.active{background:var(--active)}.head{display:flex;align-items:end;justify-content:space-between;gap:25px;border-bottom:1px solid var(--line);padding-bottom:20px}.head h2{font-size:40px;letter-spacing:-.05em;margin:0 0 5px}.head p{margin:0;color:#666861}.filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.filters button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:8px 12px;font-weight:800;font-size:12px;cursor:pointer}.filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;padding:20px 0 50px}.card{border:1px solid var(--ink);background:#fbfaf5;display:flex;flex-direction:column}.visual{height:112px;background:var(--active);border-bottom:1px solid var(--ink);display:grid;place-items:center;position:relative}.play{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--ink);color:white;font-size:19px;text-decoration:none;padding-left:3px}.num{position:absolute;left:12px;top:10px;font-size:10px;font-weight:900}.body{padding:17px;display:flex;flex-direction:column;flex:1}.meta{display:flex;justify-content:space-between;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em}.body h3{font-size:22px;letter-spacing:-.04em;line-height:1.06;margin:20px 0 5px}.creator{font-size:12px;font-weight:800;color:#676962;margin:0}.note{font-size:13px;color:#676962;margin:17px 0 22px}.link{margin-top:auto;border-top:1px solid var(--line);padding-top:13px;color:inherit;text-decoration:none;font-size:13px;font-weight:900;display:flex;justify-content:space-between}.schedule{background:var(--ink);color:#fff;padding:20px 22px;margin-bottom:45px;display:flex;justify-content:space-between;gap:25px}.schedule span{color:#d0d0c9;font-size:13px}.schedule p{margin:0;color:#d0d0c9;font-size:13px;text-align:right}.empty{grid-column:1/-1;padding:35px;text-align:center;border:1px dashed var(--line)}footer{border-top:1px solid var(--line);padding:24px 0 30px;font-size:12px;color:#6b6c66;display:flex;justify-content:space-between}.hidden{display:none!important}
+    .main-tabs{max-width:1120px;margin:20px auto 0;padding:0 22px;display:flex;gap:7px}.main-tabs button{flex:1;border:1px solid var(--ink);background:transparent;padding:14px;font-size:14px;font-weight:900;cursor:pointer}.main-tabs button.active{background:var(--ink);color:white}.food-hero{padding:52px 0 30px;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:end}.food-hero h1{font-size:clamp(48px,7vw,82px)}.food-hero p{margin:0;color:#62645d;line-height:1.55}.goal-box{background:var(--ink);color:#fff;padding:24px;margin-bottom:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:25px}.goal-box h2{font-size:30px;letter-spacing:-.04em;margin:0 0 8px}.goal-box p{margin:0;color:#d3d3cc;line-height:1.5}.target{background:var(--lime);color:var(--ink);padding:18px}.target strong{font-size:25px;display:block;margin:5px 0}.food-section{padding:25px 0;border-top:1px solid var(--line)}.food-section>h2{font-size:35px;letter-spacing:-.05em;margin:0 0 6px}.food-section>.lead{color:#666861;margin:0 0 20px;line-height:1.5}.timing-grid,.type-grid,.foods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.info-card{border:1px solid var(--ink);background:#fbfaf5;padding:19px}.info-card h3{font-size:20px;letter-spacing:-.03em;margin:0 0 12px}.info-card h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin:18px 0 7px}.info-card p,.info-card li{font-size:13px;line-height:1.48;color:#5f615b}.info-card ul{margin:7px 0 0;padding-left:18px}.rule{display:inline-block;background:var(--active);padding:7px 9px;font-size:11px;font-weight:900;margin-bottom:10px}.food-list{border-top:1px solid var(--line);padding:12px 0}.food-list:first-of-type{border-top:0}.food-list strong{display:block;font-size:14px}.food-list span{font-size:12px;color:#666861}.portion-table{width:100%;border-collapse:collapse;background:#fbfaf5;border:1px solid var(--ink)}.portion-table th,.portion-table td{text-align:left;padding:12px;border-bottom:1px solid var(--line);font-size:13px}.portion-table th{background:var(--coral);font-size:11px;text-transform:uppercase;letter-spacing:.06em}.tips{columns:2;column-gap:34px;margin:18px 0 40px}.tips li{break-inside:avoid;margin-bottom:10px;font-size:13px;line-height:1.45}.sources{font-size:11px;color:#6a6b65;padding:20px 0 40px;border-top:1px solid var(--line)}.sources a{color:inherit}.view[hidden]{display:none}
+    @media(max-width:720px){.wrap{padding:0 16px}.main-tabs{padding:0 16px}.hero,.food-hero{grid-template-columns:1fr;padding:42px 0 32px;gap:23px}.hero h1,.food-hero h1{font-size:clamp(48px,15vw,72px)}.day-buttons{grid-template-columns:1fr;margin-bottom:38px}.day-buttons button{min-height:72px;display:flex;align-items:center;justify-content:space-between}.day-buttons button span{margin:0}.head{align-items:flex-start;flex-direction:column}.head h2{font-size:34px}.filters{justify-content:flex-start;flex-wrap:nowrap;max-width:100%;overflow:auto}.grid,.timing-grid,.type-grid,.foods-grid{grid-template-columns:1fr}.card{display:grid;grid-template-columns:96px 1fr}.visual{height:auto;border-bottom:0;border-right:1px solid var(--ink)}.body h3{margin-top:16px}.schedule{margin-left:0;margin-right:0;flex-direction:column}.schedule p{text-align:left}.goal-box{grid-template-columns:1fr}.food-section>h2{font-size:30px}.tips{columns:1}.portion-table{display:block;overflow:auto}footer{flex-direction:column;gap:8px}.pill{font-size:0}.pill:after{content:'Só tapete';font-size:11px}}
+    .hero{padding:28px 0;gap:28px}.hero h1{font-size:clamp(38px,5vw,58px);line-height:1}.day-buttons{margin-bottom:26px}.day-buttons button{min-height:84px;font-size:19px;letter-spacing:-.025em}.day-buttons button span{margin-bottom:12px}.category-guide{border-left:4px solid var(--ink);background:#e6e8db;padding:16px 18px;margin:18px 0;font-size:14px;line-height:1.6}.catalog-tools{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap;font-size:13px}.catalog-tools select{background:#fbfaf5;color:var(--ink);border:1px solid var(--ink);padding:10px;font:inherit;margin-left:8px;max-width:100%}.catalog-note{font-size:12px;line-height:1.5;color:#62645d}.plan-details{border:1px solid var(--line);padding:18px;margin-top:14px;line-height:1.6;font-size:14px}.plan-details summary{cursor:pointer;font-size:16px;font-weight:800;min-height:28px}.plan-details li{margin:10px 0}.body,.head>div{min-width:0}.head p{line-height:1.5}.head h2{font-size:32px}button:focus-visible,a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #5a42b4;outline-offset:4px}.body h3{overflow-wrap:anywhere}.filters button{min-height:40px}
+    @media(max-width:720px){.hero{padding:25px 0;gap:16px}.hero h1{font-size:42px}.day-buttons{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.day-buttons button{display:block;min-height:86px;padding:12px;font-size:17px}.day-buttons button span{font-size:9px;margin-bottom:10px}.catalog-tools label{display:flex;flex-direction:column;gap:6px}.catalog-tools select{margin-left:0}.head h2{font-size:28px}.card{grid-template-columns:70px minmax(0,1fr)}.meta{gap:8px;flex-wrap:wrap}.body{padding:14px}.play{width:42px;height:42px}.filters{flex-wrap:wrap}.schedule{margin-bottom:25px}.plan-details{padding:14px}}
+    .profile-tabs{display:flex;gap:10px;padding-top:16px;padding-bottom:12px}.profile-tabs button{flex:1;min-height:54px;border:2px solid var(--ink);background:transparent;border-radius:12px;font:900 20px Arial,sans-serif;cursor:pointer;color:var(--ink)}.profile-tabs button.active{background:var(--ink);color:white}.profile-panel[hidden]{display:none!important}.profile-caution{font-size:12px;line-height:1.55;color:#62645d;border:1px solid var(--line);padding:12px;margin:0 0 22px}.equipment-label{display:inline-block;padding:5px 7px;background:#eeece4;font-size:11px;margin-top:12px;align-self:flex-start}.equipment-label.weights{background:#ffe2af}.profile-panel .catalog-tools{align-items:end}.profile-panel .catalog-tools label{display:flex;flex-direction:column;gap:6px}.profile-panel .catalog-tools select{margin-left:0}
+    .gym-hero{padding:34px 0 24px;display:grid;grid-template-columns:1.45fr 1fr;gap:34px;align-items:end}.gym-hero h1{font-size:clamp(42px,6vw,72px);line-height:.94;letter-spacing:-.06em;margin:10px 0 0}.gym-hero h1 em{font-family:Georgia,serif;font-weight:400}.gym-hero p{margin:0;color:#62645d;line-height:1.55}.gym-controls{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:10px 0 22px}.gym-control{border:1px solid var(--ink);background:#fbfaf5;padding:14px}.gym-control label{display:block;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}.gym-control select{width:100%;border:0;border-top:1px solid var(--line);padding:12px 0 0;background:transparent;color:var(--ink);font:900 18px Arial,sans-serif}.gym-summary{background:var(--ink);color:white;padding:18px 20px;display:flex;justify-content:space-between;gap:20px;margin-bottom:18px}.gym-summary strong{font-size:20px}.gym-summary span{color:#d4d4cd;font-size:13px;line-height:1.45;text-align:right}.gym-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 30px}.exercise-card{border:1px solid var(--ink);background:#fbfaf5;overflow:hidden}.exercise-top{padding:14px 16px;background:var(--lime);display:flex;justify-content:space-between;gap:14px;align-items:center;border-bottom:1px solid var(--ink)}.exercise-top span{font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.exercise-top strong{font-size:12px}.exercise-figure{padding:8px 10px;background:#efeee7;border-bottom:1px solid var(--line)}.exercise-figure svg{display:block;width:100%;height:auto;max-height:190px}.exercise-content{padding:16px}.exercise-content label{display:block;font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.exercise-select{width:100%;margin:7px 0 13px;border:1px solid var(--ink);background:white;color:var(--ink);padding:11px;font:800 14px Arial,sans-serif}.exercise-name{font-size:22px;letter-spacing:-.04em;margin:0 0 5px}.exercise-meta{font-size:12px;font-weight:800;color:#656760;margin:0 0 12px}.exercise-cue{font-size:13px;line-height:1.5;color:#5f615b;margin:0}.diagram-caption{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:#62645d;margin-top:5px}.muscle-key{color:#c44835;font-weight:900}.gym-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:30px}.gym-notes .info-card{background:#fbfaf5}.gym-plan-buttons{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:5px 0 18px}.gym-plan-buttons button{border:1px solid var(--ink);background:transparent;min-height:76px;padding:11px;text-align:left;font-weight:900;cursor:pointer}.gym-plan-buttons button span{display:block;font-size:9px;letter-spacing:.09em;margin-bottom:8px}.gym-plan-buttons button.active{background:var(--coral)}
+    @media(max-width:720px){.gym-hero{grid-template-columns:1fr;gap:16px}.gym-hero h1{font-size:44px}.gym-controls{grid-template-columns:1fr}.gym-plan-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}.gym-plan-buttons button:last-child{grid-column:1/-1}.gym-grid,.gym-notes{grid-template-columns:1fr}.gym-summary{flex-direction:column}.gym-summary span{text-align:left}.exercise-figure svg{max-height:170px}}
+    .gym-mode-tabs{display:flex;gap:8px;margin:20px 0}.gym-mode-tabs button{flex:1;min-height:52px;border:2px solid var(--ink);background:transparent;font-weight:900;cursor:pointer}.gym-mode-tabs button.active{background:var(--ink);color:white}.gym-library[hidden],#gym-plans-panel[hidden]{display:none!important}.library-toolbar{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin:14px 0}.library-toolbar label{border:1px solid var(--ink);background:#fbfaf5;padding:12px;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.library-toolbar input,.library-toolbar select{display:block;width:100%;border:0;border-top:1px solid var(--line);background:transparent;padding:11px 0 0;margin-top:7px;font:800 16px Arial,sans-serif;color:var(--ink)}.muscle-buttons{display:flex;gap:7px;overflow:auto;padding:3px 0 13px}.muscle-buttons button{white-space:nowrap;border:1px solid var(--ink);background:transparent;padding:10px 13px;font-weight:900;cursor:pointer}.muscle-buttons button.active{background:var(--coral)}.library-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:10px 0 28px}.library-card{border:1px solid var(--ink);background:#fbfaf5;display:flex;flex-direction:column;min-width:0}.photo-pair{display:grid;grid-template-columns:1fr 1fr;background:#ecebe5;border-bottom:1px solid var(--ink);position:relative;min-height:150px}.photo-pair img{width:100%;height:180px;object-fit:contain;display:block}.photo-pair img+img{border-left:1px solid var(--line)}.photo-pair span{position:absolute;top:7px;background:var(--ink);color:white;padding:4px 6px;font-size:9px;font-weight:900}.photo-pair .start{left:7px}.photo-pair .finish{left:calc(50% + 7px)}.library-body{padding:15px;display:flex;flex-direction:column;flex:1}.library-body h3{font-size:21px;margin:5px 0;letter-spacing:-.04em}.library-body p{font-size:12px;line-height:1.45;color:#62645d}.library-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto}.library-actions button,.library-actions a{border:1px solid var(--ink);padding:10px 8px;text-align:center;background:transparent;color:var(--ink);font:800 11px Arial,sans-serif;text-decoration:none;cursor:pointer}.library-actions button.added{background:var(--lime)}.my-list{border:2px solid var(--ink);background:#fbfaf5;margin:18px 0 32px}.my-list-head{background:var(--ink);color:white;padding:15px;display:flex;justify-content:space-between;align-items:center;gap:12px}.my-list-head h2{margin:0;font-size:23px}.my-list-head button{border:1px solid white;background:transparent;color:white;padding:8px 10px;font-weight:800;cursor:pointer}.my-list-items{display:grid;grid-template-columns:repeat(2,1fr);gap:0}.list-row{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.list-row:nth-child(odd){border-right:1px solid var(--line)}.list-row strong{display:block;font-size:14px}.list-row span{font-size:11px;color:#62645d}.list-row button{border:0;background:transparent;font-size:18px;cursor:pointer}.license-note{font-size:11px;line-height:1.5;color:#62645d;margin:16px 0 35px}.license-note a{color:inherit}
+    @media(max-width:720px){.gym-mode-tabs{flex-direction:column}.library-toolbar{grid-template-columns:1fr}.library-grid{grid-template-columns:1fr}.photo-pair img{height:160px}.my-list-items{grid-template-columns:1fr}.list-row:nth-child(odd){border-right:0}}
+    .plan-exercise{border:1px solid var(--ink);background:#fbfaf5;margin-bottom:15px}.plan-exercise-head{display:grid;grid-template-columns:60px 1fr auto;gap:12px;align-items:center;padding:13px 15px;background:var(--lime);border-bottom:1px solid var(--ink)}.plan-number{font-size:26px;font-weight:900}.plan-exercise-head span{display:block;font-size:9px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.plan-exercise-head strong{font-size:17px}.plan-exercise-head .pair{font-size:11px}.plan-exercise-main{display:grid;grid-template-columns:minmax(260px,.8fr) 1.2fr;gap:0}.plan-photo{border-right:1px solid var(--line);padding:12px}.plan-photo .photo-pair img{height:145px}.plan-photo .exercise-select{margin-bottom:8px}.set-tracker{padding:12px 15px}.set-tracker-head,.set-row{display:grid;grid-template-columns:42px 1fr 1fr 46px;gap:8px;align-items:center}.set-tracker-head{font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding:5px 0 9px}.set-row{border-top:1px solid var(--line);padding:9px 0}.set-index{font-size:18px;font-weight:900}.stepper{display:grid;grid-template-columns:32px minmax(42px,1fr) 32px;align-items:stretch;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#eeeeeb}.stepper button{border:0;background:#dedfdb;font-size:18px;font-weight:900;cursor:pointer}.stepper input{width:100%;min-width:0;border:0;background:transparent;text-align:center;font:800 16px Arial,sans-serif;padding:9px 2px;-moz-appearance:textfield}.stepper input::-webkit-inner-spin-button{appearance:none}.set-done{width:42px;height:42px;border:1px solid var(--line);border-radius:8px;background:#e4e5e1;font-size:20px;cursor:pointer}.set-done.done{background:var(--lime);border-color:var(--ink)}.set-note{font-size:10px;color:#6b6d66;margin:8px 0 0}.plan-image-fallback{display:none;padding:35px 10px;text-align:center;font-size:11px;color:#62645d}.plan-photo .diagram-caption{margin-bottom:9px}
+    @media(max-width:760px){.plan-exercise-head{grid-template-columns:44px 1fr auto}.plan-exercise-main{grid-template-columns:1fr}.plan-photo{border-right:0;border-bottom:1px solid var(--line)}.set-tracker{padding:10px}.set-tracker-head,.set-row{grid-template-columns:28px minmax(0,1fr) minmax(0,1fr) 40px;gap:5px}.stepper{grid-template-columns:27px minmax(34px,1fr) 27px}.stepper button{font-size:16px}.stepper input{font-size:15px}.set-done{width:38px;height:38px}.plan-photo .photo-pair img{height:135px}}
+    .photo-pair.image-error img,.photo-pair.image-error .start,.photo-pair.image-error .finish{display:none}.photo-pair.image-error .plan-image-fallback{display:block;grid-column:1/-1}
+    #gym-exercises.gym-grid{grid-template-columns:1fr}.workout-save{border:2px solid var(--ink);background:#fbfaf5;margin:0 0 20px}.workout-save-main{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:15px}.workout-save h3{margin:0 0 4px;font-size:20px}.workout-save p{margin:0;color:#62645d;font-size:12px}.save-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.save-actions button,.save-actions label{border:1px solid var(--ink);background:transparent;color:var(--ink);padding:10px 12px;font:800 12px Arial,sans-serif;cursor:pointer}.save-actions .primary{background:var(--lime)}.save-actions input{display:none}.session-history{border-top:1px solid var(--line);padding:12px 15px}.session-history summary{font-weight:900;cursor:pointer}.history-list{margin-top:10px}.history-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:center}.history-row strong{display:block;font-size:13px}.history-row span{font-size:11px;color:#62645d}.history-row button{border:1px solid var(--ink);background:transparent;padding:7px 9px;font-weight:800;cursor:pointer}.save-feedback{font-weight:900;color:#2f6b2f!important;margin-top:5px!important}@media(max-width:720px){.workout-save-main{grid-template-columns:1fr}.save-actions{justify-content:flex-start}.save-actions button,.save-actions label{flex:1;text-align:center}}
+  </style>
+</head>
+<body>
+  <nav class="profile-tabs wrap" aria-label="Escolher perfil"><button class="active" data-profile="manel" aria-pressed="true" aria-controls="manel-profile">Manel</button><button data-profile="mariana" aria-pressed="false" aria-controls="mariana-profile">Mariana</button></nav>
+  <header class="top wrap"><div class="logo"><span class="mark">↗</span> Treino em Casa</div><span class="pill">✓ Treino + alimentação</span></header>
+  <div id="manel-profile" class="profile-panel">
+  <nav class="main-tabs" aria-label="Conteúdo do Manel"><button class="active" data-view="training">Treinos em casa</button><button data-view="gym">Ginásio</button><button data-view="food">Alimentação</button></nav>
+  <main class="wrap view" id="training-view">
+    <section class="hero"><div><div class="overline">Manel · ganhar músculo + perder gordura</div><h1>Constrói músculo.<br><em>Fica definido.</em></h1></div><p>54 opções apresentadas por treinadores masculinos, incluindo progressões avançadas em todas as categorias. Em casa, dá prioridade a peito, tríceps, ombros, pernas e core; para costas e bíceps, mantém também resistência de puxar no ginásio.</p></section>
+    <div class="step">01 — Escolhe o tipo de treino</div>
+    <nav class="day-buttons" aria-label="Tipo de treino">
+      <button class="active" data-day="forca"><span>BASE</span>Corpo inteiro</button>
+      <button data-day="superior"><span>TRONCO COMPLETO</span>Peito, costas &amp; braços</button>
+      <button data-day="peito"><span>EMPURRAR</span>Peito &amp; tríceps</button>
+      <button data-day="costas"><span>COMPLEMENTO</span>Costas &amp; postura</button>
+      <button data-day="bracos"><span>BÍCEPS: LÊ A NOTA</span>Braços &amp; ombros</button>
+      <button data-day="core"><span>8 OPÇÕES</span>Abdominais &amp; core</button>
+      <button data-day="pernas"><span>EQUILÍBRIO</span>Pernas &amp; glúteos</button>
+      <button data-day="cardio"><span>CONDIÇÃO FÍSICA</span>Cardio</button>
+      <button data-day="mobilidade"><span>DIA LEVE</span>Mobilidade</button>
+    </nav>
+    <section class="head"><div><div class="step">02 — Escolhe o vídeo</div><h2 id="day-title">Força total</h2><p id="day-description">Corpo inteiro, estabilidade e força funcional.</p></div><div class="filters" aria-label="Dificuldade"><button class="active" data-level="Todos">Todos</button><button data-level="Iniciante">Iniciante</button><button data-level="Intermédio">Intermédio</button><button data-level="Avançado">Avançado</button></div></section>
+    <aside class="category-guide" id="category-guide" aria-live="polite"></aside>
+    <div class="catalog-tools"><label for="duration">Tempo disponível <select id="duration"><option value="0">Qualquer duração</option><option value="10">Até 10 min</option><option value="20">Até 20 min</option></select></label><span id="results-count" role="status"></span></div>
+    <p class="catalog-note">Dificuldade: estimativa orientadora, não classificação clínica. Duração aproximada do bloco de treino; introdução e pausas podem acrescentar tempo. Os títulos estão resumidos em português. Os vídeos podem ser repetidos entre categorias quando trabalham várias zonas.</p>
+    <section class="grid" id="workouts" aria-label="Vídeos de treino"></section>
+    <aside class="schedule"><strong>Mais opções ≠ mais esforço todos os dias<br><span>Casa e ginásio contam para o mesmo total semanal.</span></strong><p>Escolhe 1 sessão principal. Se recuperares bem, junta 1 bloco curto de core ou mobilidade.<br>Não precisas de fazer todos os vídeos de uma categoria.</p></aside>
+    <section class="food-section"><h2>Como encaixar no teu plano</h2><p class="lead">Prioridade: ganhar músculo de forma gradual, reduzir gordura total e manter uma rotina sustentável.</p><div class="type-grid">
+      <article class="info-card"><h3>Queres um tronco mais largo?</h3><p>Dorsais e deltoides laterais mais desenvolvidos podem acentuar a silhueta em V; peito e braços completam o conjunto. Não substitui perder gordura total e não acontece em poucos dias.</p><p>No ginásio, mantém puxadas, remadas, supino, elevações laterais e curls. Os vídeos de costas no tapete treinam sobretudo controlo, resistência e musculatura posterior: não equivalem a puxar uma carga.</p></article>
+      <article class="info-card"><h3>Mais dias disponíveis</h3><p>Não há obrigação de ficar pelos três dias. Distribui o esforço em vez de somar sessões intensas: cerca de 48 horas entre trabalhos exigentes do mesmo músculo é um ponto de partida; espera mais se não recuperaste.</p><p>Depois de supino, peito, tríceps e ombros já foram solicitados. Depois de puxadas e remadas, costas e bíceps também. Nos dias extra escolhe outra zona recuperada, cardio leve ou mobilidade.</p></article>
+      <article class="info-card"><h3>Abdominais: força, não perda localizada</h3><p>Começa com 1 vídeo de 5–10 min, 2–3 vezes por semana, depois da sessão principal ou num dia separado. Conta também as pranchas dos vídeos de corpo inteiro.</p><p>Fazer abdominais não elimina especificamente gordura da barriga. Não precisas de sessões intensas diárias, mesmo que o título do vídeo diga “daily”, “six pack” ou “belly burn”.</p></article>
+    </div>
+    <details class="plan-details"><summary>Exemplos flexíveis para 3, 4 ou 5 dias</summary><p>Exemplos, não uma lista para juntar ao plano do ginásio. Uma sessão de ginásio substitui a sessão de força correspondente em casa.</p><ul><li><strong>3 dias:</strong> corpo inteiro · descanso · corpo inteiro · descanso · corpo inteiro. No ginásio, inclui puxar com resistência. Core curto em duas dessas sessões, se necessário.</li><li><strong>4 dias de força:</strong> superior · pernas + core · descanso · superior · pernas + core. Em casa, o trabalho de costas/bíceps continua limitado sem material.</li><li><strong>5 dias ativos:</strong> mantém a estrutura anterior e acrescenta um dia de caminhada/cardio confortável e mobilidade. Não transformes o dia extra em mais um treino duro de peito.</li></ul><p>Se já fazes três sessões de musculação no ginásio, os dias em casa podem ser apenas cardio leve/mobilidade. Acrescenta core só se não estiver já suficientemente trabalhado.</p></details>
+    <details class="plan-details"><summary>Como progredir e avaliar melhorias</summary><ul><li>Aquece 5–8 min com movimentos fáceis. Nos vídeos sem aquecimento, faz isso antes de carregar no play.</li><li>Repete alguns vídeos-base durante 4–6 semanas; a variedade é uma escolha, não uma obrigação diária.</li><li>Termina os blocos exigentes com técnica controlada e, quando possível, margem de 1–3 repetições. Pausa o vídeo quando precisares.</li><li>Quando uma variante fica fácil, aumenta gradualmente repetições, amplitude confortável ou dificuldade. Nas flexões: joelhos → normais → descida controlada. No ginásio, regista cargas e repetições.</li><li>Treina os grandes grupos musculares pelo menos duas vezes por semana. Para hipertrofia, cerca de 10 séries exigentes por músculo/semana é uma referência ajustável, não um mínimo obrigatório para começar. Os minutos de um vídeo não equivalem automaticamente a séries.</li><li>Avalia força, cintura e fotografias em condições semelhantes a cada 4 semanas. Usa 8–12 semanas como janela de avaliação, não como promessa de transformação; resultados variam.</li><li>Mantém a alimentação vegetariana/vegan do separador seguinte, proteína suficiente e um défice pequeno, se necessário. Não cortes mais comida só para acelerar a balança.</li><li>Dor aguda, articular ou lombar: interrompe o exercício. Dor muscular tardia pode ocorrer, mas não é necessária para o treino resultar. Dor persistente requer avaliação.</li></ul></details>
+    </section>
+    <p class="sources">Orientações: <a href="https://acsm.org/resistance-training-guidelines-update-2026/" target="_blank" rel="noopener">ACSM — treino de força, 2026</a>. Links e descrições dos vídeos revistos em 27/09/2026; a disponibilidade pode mudar. A consulta de títulos e descrições não substitui uma avaliação da tua execução nem a visualização integral de cada vídeo. Ignora promessas de perda localizada ou resultados garantidos nos títulos.</p>
+  </main>
+  <main class="wrap view" id="gym-view" hidden>
+    <section class="gym-hero"><div><div class="overline">Manel · plano de ginásio</div><h1>Máquinas, cabos<br><em>e halteres.</em></h1></div><p>Cinco treinos de 30–45 minutos. O número de exercícios adapta-se ao tempo disponível; em cada linha tens três alternativas, fotografias do movimento e registo de peso e repetições.</p></section>
+    <p class="profile-caution">As fotografias mostram duas fases do movimento, mas não todos os detalhes técnicos. Na primeira utilização de uma máquina, confirma a regulação e a execução com um profissional do ginásio. Interrompe perante dor aguda, articular, no peito, tonturas ou perda de controlo.</p>
+    <nav class="gym-mode-tabs" aria-label="Modo do ginásio"><button class="active" data-gym-mode="plans" aria-pressed="true">Planos de treino · 30–45 min</button><button data-gym-mode="library" aria-pressed="false">Biblioteca por músculo + minha lista</button></nav>
+    <section id="gym-plans-panel">
+    <div class="step">01 — Escolhe um dos cinco treinos</div>
+    <nav class="gym-plan-buttons" aria-label="Planos de ginásio">
+      <button class="active" data-gym-plan="upper"><span>PARTE SUPERIOR</span>Upper body</button>
+      <button data-gym-plan="lower"><span>PARTE INFERIOR</span>Lower body</button>
+      <button data-gym-plan="full"><span>CORPO INTEIRO</span>Full body</button>
+      <button data-gym-plan="push"><span>LOCALIZADO</span>Push</button>
+      <button data-gym-plan="pull"><span>LOCALIZADO</span>Pull</button>
+    </nav>
+    <div class="gym-controls">
+      <div class="gym-control"><label for="gym-plan">Treino selecionado</label><select id="gym-plan"><option value="upper">Upper body · peito, costas e braços</option><option value="lower">Lower body · pernas e glúteos</option><option value="full">Full body · corpo inteiro</option><option value="push">Push · peito, ombros e tríceps</option><option value="pull">Pull · costas e bíceps</option></select></div>
+      <div class="gym-control"><label for="gym-time">Tempo disponível</label><select id="gym-time"><option value="30">30 minutos</option><option value="40" selected>40 minutos</option><option value="45">45 minutos</option></select></div>
+    </div>
+    <section class="workout-save" aria-label="Guardar treino"><div class="workout-save-main"><div><h3>Registo do treino</h3><p>As alterações são guardadas automaticamente neste navegador. O botão cria uma sessão no histórico.</p><p class="save-feedback" id="save-status" role="status">Ainda não gravaste uma sessão.</p></div><div class="save-actions"><button class="primary" id="save-workout" type="button">Guardar treino</button><button id="export-workouts" type="button">Exportar cópia</button><label for="import-workouts">Importar cópia<input id="import-workouts" type="file" accept="application/json,.json"></label></div></div><details class="session-history"><summary>Histórico de sessões <span id="history-count">0</span></summary><div class="history-list" id="workout-history"><p class="empty">Ainda não existem sessões gravadas.</p></div></details></section>
+    <aside class="gym-summary"><strong id="gym-title">Upper body</strong><span id="gym-description"></span></aside>
+    <div class="step">02 — Em cada cartão, escolhe uma das três alternativas</div>
+    <section class="gym-grid" id="gym-exercises" aria-live="polite"></section>
+    <section class="gym-notes">
+      <article class="info-card"><h3>Como usar os 30–45 min</h3><p>O número de exercícios adapta-se ao tempo. Em <strong>30 min</strong> ficam apenas os movimentos prioritários e duas séries; em <strong>40 min</strong> entra mais um acessório; em <strong>45 min</strong> surge a versão completa. Alterna os pares indicados quando o ginásio permitir. Se a técnica piorar, prolonga o descanso.</p></article>
+      <article class="info-card"><h3>Peso e progressão</h3><p>Escolhe uma carga que permita terminar com técnica e aproximadamente 1–3 repetições de margem. Quando atingires o topo das repetições em todas as séries, aumenta a carga mínima disponível ou acrescenta uma repetição. Regista peso, repetições e regulação da máquina.</p></article>
+      <article class="info-card"><h3>Para músculo e definição</h3><p>Alterna estes treinos sem repetir intensamente o mesmo músculo em dias consecutivos. Para peito e costas, tenta acumular trabalho de qualidade duas vezes por semana. A definição abdominal depende da gordura total: não há exercício que retire apenas a barriga.</p></article>
+    </section>
+    <details class="plan-details"><summary>Exemplos de combinação semanal</summary><ul><li><strong>3 dias:</strong> Upper · Lower · Full body, com pelo menos um dia de intervalo quando possível.</li><li><strong>4 dias:</strong> Upper · Lower · descanso · Push · Pull.</li><li><strong>5 dias:</strong> Push · Pull · Lower · descanso · Upper · Lower leve. O quinto dia só faz sentido se recuperares bem.</li></ul><p>Não somes automaticamente estes treinos aos vídeos de casa: uma sessão de força para o mesmo grupo muscular conta para o mesmo volume semanal.</p></details>
+    <p class="sources">Estrutura baseada nas <a href="https://acsm.org/resistance-training-guidelines-update-2026/" target="_blank" rel="noopener noreferrer">orientações de musculação do ACSM (2026)</a>: consistência, pelo menos duas séries exigentes e volume semanal ajustado ao objetivo. Os pares antagonistas são usados para poupar tempo; não és obrigado a fazê-los se o ginásio estiver cheio ou precisares de mais recuperação.</p>
+    </section>
+    <section class="gym-library" id="gym-library-panel" hidden>
+      <section class="head"><div><div class="step">Biblioteca de exercícios</div><h2>Escolhe o músculo</h2><p>Vê duas fases do movimento, compara alternativas e cria a tua própria lista.</p></div><span id="library-count" role="status"></span></section>
+      <nav class="muscle-buttons" aria-label="Filtrar por músculo">
+        <button class="active" data-muscle="biceps">Bíceps</button><button data-muscle="chest">Peito</button><button data-muscle="back">Costas</button><button data-muscle="triceps">Tríceps</button><button data-muscle="shoulders">Ombros</button><button data-muscle="legs">Pernas</button><button data-muscle="posterior">Glúteos e posteriores</button><button data-muscle="core">Abdominais</button><button data-muscle="all">Todos</button>
+      </nav>
+      <div class="library-toolbar"><label>Pesquisar exercício<input id="exercise-search" type="search" placeholder="Ex.: curl, supino, remada…"></label><label>Material<select id="exercise-equipment"><option value="all">Todo o material</option><option value="Máquina">Máquinas</option><option value="Cabo">Cabos</option><option value="Halteres">Halteres</option><option value="Barra">Barra</option><option value="Peso corporal">Peso corporal</option></select></label></div>
+      <section class="my-list" aria-label="A minha lista de exercícios"><div class="my-list-head"><h2>Minha lista <span id="my-list-count">0</span></h2><button id="clear-exercise-list" type="button">Limpar lista</button></div><div class="my-list-items" id="my-list-items"><p class="empty">Ainda não adicionaste exercícios.</p></div></section>
+      <section class="library-grid" id="exercise-library"></section>
+      <p class="license-note">As fotografias de início/fim são carregadas da base pública <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener noreferrer">free-exercise-db</a>, disponibilizada em domínio público. Não são imagens da Simply Fitness. Cada cartão inclui uma ligação para o guia original da <a href="https://www.simplyfitness.com/pages/workout-exercise-guides" target="_blank" rel="noopener noreferrer">Simply Fitness</a> quando existe correspondência. A disponibilidade das imagens externas exige internet e a técnica deve ser confirmada presencialmente.</p>
+    </section>
+  </main>
+  <main class="wrap view" id="food-view" hidden>
+    <section class="food-hero"><div><div class="overline">Vegetariano ou vegan</div><h1>Come para perder gordura.<br><em>Treina para ganhar músculo.</em></h1></div><p>Não é possível perder gordura apenas na barriga. O equilíbrio é um pequeno défice energético, proteína suficiente e progressão na musculação para desenvolver peito, costas e braços.</p></section>
+    <section class="goal-box"><div><h2>O objetivo é recomposição corporal</h2><p>Perder peso devagar — cerca de 0,2 a 0,4 kg por semana — ajuda a preservar músculo. Se a força estiver a subir e a cintura a descer, estás no caminho certo mesmo que a balança mude pouco.</p></div><div class="target"><span>Para 70 kg</span><strong>110–140 g de proteína/dia</strong><span>Distribui por 3–5 momentos, cerca de 25–35 g de cada vez.</span></div></section>
+
+    <section class="food-section"><h2>Antes e depois, conforme o horário</h2><p class="lead">A refeição normal pode ser a recuperação. Não acrescentes calorias só porque treinaste.</p><div class="timing-grid">
+      <article class="info-card"><span class="rule">MANHÃ · DEPOIS DO PEQUENO-ALMOÇO</span><h3>Já comeste antes de treinar</h3><h4>Antes</h4><p>1–2 horas antes: 40–60 g de aveia + 250 ml de bebida de soja, ou 2 fatias de pão + 2 ovos, ou iogurte de soja proteico + banana.</p><h4>Depois</h4><p>Se o almoço for dentro de 1–2 horas, bebe água e espera. Se faltar mais tempo, escolhe 20–30 g de proteína: 250 g de skyr/quark, ou 250 ml de soja + 25 g de proteína vegetal, ou pão com 100–150 g de tofu.</p></article>
+      <article class="info-card"><span class="rule">ANTES DO ALMOÇO</span><h3>O almoço é o pós-treino</h3><h4>Antes</h4><p>Se tens fome 30–90 min antes: banana, 1–2 fatias de pão, ou 2–4 tortitas de arroz. Evita muita gordura e fibra imediatamente antes.</p><h4>Depois</h4><p>Almoça dentro de 1–2 horas: 150–200 g de tofu/tempeh, 150–200 g de seitan, ou 2 ovos + 200 g de claras; junta arroz, massa, batata ou pão e legumes.</p></article>
+      <article class="info-card"><span class="rule">FINAL DO DIA · ANTES DO JANTAR</span><h3>O jantar faz a recuperação</h3><h4>Antes</h4><p>1–2 horas antes: fruta + iogurte proteico, pão com húmus, ou 250 ml de bebida de soja + banana.</p><h4>Depois</h4><p>Se jantares até 90 min depois, espera pelo jantar. Se demora mais de 2 horas, toma um lanche com 20–25 g de proteína e reduz ligeiramente o jantar.</p></article>
+    </div></section>
+
+    <section class="food-section"><h2>Ajusta ao tipo de treino</h2><p class="lead">A proteína mantém-se; são sobretudo os hidratos e a quantidade total que mudam.</p><div class="type-grid">
+      <article class="info-card"><span class="rule">GINÁSIO · MUSCULAÇÃO</span><h3>Prioridade a músculo</h3><p>Antes: 30–60 g de hidratos + 20–30 g de proteína, se a última refeição foi há mais de 3 horas. Depois: 25–35 g de proteína + 40–80 g de hidratos, ou simplesmente a refeição seguinte.</p><ul><li>Não cortes demasiado nos hidratos: precisas deles para progredir nas cargas.</li><li>Nos dias de peito/costas, não precisas de proteína adicional — precisas de atingir o total diário.</li></ul></article>
+      <article class="info-card"><span class="rule">CASA · FORÇA</span><h3>Recuperação normal</h3><p>Para sessões de 20–30 min, mantém a alimentação habitual. Se uma refeição completa chegar dentro de 2 horas, não precisas de batido nem snack especial.</p><ul><li>Procura 25–35 g de proteína na refeição seguinte.</li><li>Usa uma porção moderada de hidratos.</li></ul></article>
+      <article class="info-card"><span class="rule">CARDIO / HIIT</span><h3>Mais energia, não mais proteína</h3><p>Antes, fruta, pão, aveia ou arroz ajudam no rendimento. Depois, repõe hidratos e líquidos; mantém os mesmos 25–35 g de proteína.</p><ul><li>Cardio curto: água chega.</li><li>Muito suor ou calor: água e uma refeição com algum sal.</li></ul></article>
+    </div></section>
+
+    <section class="food-section"><h2>Constrói refeições com o que tens</h2><p class="lead">Escolhe uma fonte de cada coluna. As quantidades são pontos de partida e referem-se ao alimento pronto a comer, salvo indicação contrária.</p><table class="portion-table"><thead><tr><th>Proteína principal</th><th>Hidrato</th><th>Vegetais</th><th>Gordura</th></tr></thead><tbody>
+      <tr><td>Tofu 180–250 g</td><td>Arroz/massa 150–220 g cozidos</td><td>250–400 g</td><td>Azeite 1 colher de chá</td></tr>
+      <tr><td>Tempeh 150–200 g</td><td>Batata 250–350 g</td><td>250–400 g</td><td>Frutos secos 15–20 g</td></tr>
+      <tr><td>Seitan 150–200 g</td><td>Pão 80–120 g</td><td>Salada abundante</td><td>Tahini 10–15 g</td></tr>
+      <tr><td>Lentilhas/feijão/grão 250–350 g + soja/tofu</td><td>Aveia 50–80 g seca</td><td>Sopa de legumes</td><td>Sementes 10–15 g</td></tr>
+      <tr><td>Vegetariano: 2 ovos + 200 g claras</td><td>Fruta 1–2 peças</td><td>Legumes congelados servem</td><td>Abacate 40–60 g</td></tr>
+    </tbody></table></section>
+
+    <section class="food-section"><h2>Alimentos úteis para ter em casa</h2><div class="foods-grid">
+      <article class="info-card"><h3>Proteína</h3><div class="food-list"><strong>Tofu, tempeh e edamame</strong><span>Fontes completas e versáteis.</span></div><div class="food-list"><strong>Seitan</strong><span>Muito proteico; não serve para doença celíaca.</span></div><div class="food-list"><strong>Soja texturizada</strong><span>Barata, seca e fácil de juntar a molhos.</span></div><div class="food-list"><strong>Leguminosas</strong><span>Feijão, grão, lentilhas e ervilhas.</span></div><div class="food-list"><strong>Vegetariano</strong><span>Ovos, claras, skyr e quark.</span></div></article>
+      <article class="info-card"><h3>Energia para treinar</h3><div class="food-list"><strong>Aveia, arroz e massa</strong><span>Fáceis de dosear e preparar.</span></div><div class="food-list"><strong>Batata e batata-doce</strong><span>Saciantes e ricas em potássio.</span></div><div class="food-list"><strong>Pão</strong><span>Prático antes do treino.</span></div><div class="food-list"><strong>Banana e outras frutas</strong><span>Hidratos rápidos e portáteis.</span></div></article>
+      <article class="info-card"><h3>Opções rápidas</h3><div class="food-list"><strong>Batido vegan</strong><span>250 ml soja + banana + 25–30 g proteína de soja/ervilha.</span></div><div class="food-list"><strong>Tigela</strong><span>Skyr/soja proteica + aveia + fruta.</span></div><div class="food-list"><strong>Sandes</strong><span>Pão + tofu fumado, húmus ou ovo.</span></div><div class="food-list"><strong>Salteado</strong><span>Tofu + legumes congelados + arroz.</span></div></article>
+    </div></section>
+
+    <section class="food-section"><h2>Dicas importantes</h2><ul class="tips"><li>Pesa-te 3–4 manhãs por semana e usa a média, não um único dia.</li><li>Mede a cintura a cada 2–4 semanas: não existe redução localizada da barriga.</li><li>Se perderes mais de 0,5 kg/semana e a força cair, estás provavelmente a comer pouco.</li><li>Se a cintura não mudar durante 3–4 semanas, reduz uma pequena porção diária de gordura ou hidratos.</li><li>Para controlar calorias, usa tofu, seitan e soja como base; frutos secos e azeite são saudáveis, mas concentrados.</li><li>Combina alimentos ricos em ferro com vitamina C; evita chá/café junto das refeições principais.</li><li>Numa dieta vegan, garante vitamina B12 e presta atenção a vitamina D, cálcio, ferro, iodo, zinco e ómega-3.</li><li>Prefere bebidas vegetais de soja sem açúcar e fortificadas com cálcio, B12 e vitamina D.</li><li>Creatina monohidratada pode ser especialmente útil para vegetarianos/vegans, mas confirma com médico se tens doença renal ou medicação relevante.</li><li>Dorme 7–9 horas: músculo e controlo do apetite também dependem da recuperação.</li></ul></section>
+    <p class="sources">Referências: <a href="https://www.bda.uk.com/resource/sport-exercise-nutrition.html" target="_blank" rel="noopener">BDA — nutrição no desporto</a> · <a href="https://www.bda.uk.com/resource/vegetarian-vegan-plant-based-diet.html" target="_blank" rel="noopener">BDA — alimentação vegetariana e vegan</a> · <a href="https://www.nhs.uk/live-well/eat-well/how-to-eat-a-balanced-diet/the-vegan-diet/" target="_blank" rel="noopener">NHS — dieta vegan equilibrada</a> · <a href="https://link.springer.com/article/10.1186/s12970-017-0189-4" target="_blank" rel="noopener">ISSN — proteína e timing</a>. Recomendações gerais para adulto saudável; condições clínicas exigem nutricionista ou médico.</p>
+  </main>
+  </div>
+  <div id="mariana-profile" class="profile-panel" hidden>
+    <nav class="main-tabs" aria-label="Conteúdo da Mariana"><button class="active" data-mview="training" aria-pressed="true">Treinos</button><button data-mview="food" aria-pressed="false">Alimentação</button></nav>
+    <main class="wrap view" id="mariana-training">
+      <section class="hero"><div><div class="overline">Mariana · 1,55 m · 50 kg</div><h1>Mais força.<br><em>Ao teu ritmo.</em></h1></div><p>Objetivo: ganhar algum músculo, sobretudo com o peso do corpo. 30 sessões sem material e uma alternativa com halteres, em seis categorias. Blocos de 15–30 minutos, sem semana rígida.</p></section>
+      <p class="profile-caution">Ponto de partida geral para uma adulta saudável. Idade, experiência e eventuais limitações não foram indicadas; altura e peso não definem o nível do treino. Se houver lesão, gravidez/pós-parto ou condição clínica, este catálogo precisa de adaptação.</p>
+      <div class="step">01 — Escolhe a categoria</div>
+      <nav class="day-buttons" aria-label="Categorias da Mariana">
+        <button class="active" data-mday="total"><span>CORPO INTEIRO</span>Total body</button>
+        <button data-mday="upper"><span>TRONCO E BRAÇOS</span>Upper body</button>
+        <button data-mday="lower"><span>PERNAS E GLÚTEOS</span>Lower body</button>
+        <button data-mday="core"><span>ESTABILIDADE</span>Abs &amp; core</button>
+        <button data-mday="cardio"><span>CONDIÇÃO FÍSICA</span>Cardio</button>
+        <button data-mday="mobility"><span>DIA LEVE</span>Mobilidade</button>
+      </nav>
+      <section class="head"><div><div class="step">02 — Escolhe o vídeo</div><h2 id="mariana-title">Total body</h2><p id="mariana-description"></p></div><div class="filters" aria-label="Dificuldade para Mariana"><button class="active" data-mlevel="Todos">Todos</button><button data-mlevel="Iniciante">Iniciante</button><button data-mlevel="Intermédio">Intermédio</button><button data-mlevel="Avançado">Avançado</button></div></section>
+      <aside class="category-guide" id="mariana-guide" aria-live="polite"></aside>
+      <div class="catalog-tools"><label for="mariana-duration">Tempo disponível <select id="mariana-duration"><option value="30">15–30 min · todos</option><option value="15">Até 15 min</option><option value="20">Até 20 min</option></select></label><label for="mariana-equipment">Material <select id="mariana-equipment"><option value="Sem material">Só bodyweight / tapete</option><option value="Todos">Todos, incluindo halteres</option><option value="Halteres">Com halteres</option></select></label><span id="mariana-count" role="status"></span></div>
+      <p class="catalog-note">Duração aproximada do bloco de treino anunciado; introdução, aquecimento e pausas podem aumentar o tempo total do vídeo. Dificuldade estimada: pausa e adapta à tua capacidade. Títulos resumidos em português; ignora promessas de “tonificação rápida” ou resultados garantidos.</p>
+      <section class="grid" id="mariana-workouts" aria-label="Vídeos para Mariana"></section>
+      <aside class="schedule"><strong>A base é força progressiva<br><span>Não precisas de fazer as seis categorias na mesma semana.</span></strong><p>Uma sessão principal por dia de força.<br>Core, cardio e mobilidade são complementos, não uma obrigação de acumular vídeos.</p></aside>
+      <section class="food-section"><h2>Ganhar músculo com bodyweight</h2><div class="type-grid">
+        <article class="info-card"><h3>Como começar</h3><p>Experimenta 2–3 sessões de força por semana, com descanso entre sessões exigentes do mesmo grupo. Escolhe total body ou alterna upper/lower; numa rotina equilibrada, trabalha os grandes grupos pelo menos duas vezes por semana.</p><p>Começa com uma variante simples e desafiante. Faz 5–8 minutos de aquecimento dinâmico antes dos vídeos que não o incluam.</p></article>
+        <article class="info-card"><h3>Como progredir</h3><p>Repete algumas sessões durante 4–6 semanas. Quando ficam fáceis, aumenta gradualmente repetições, amplitude confortável ou dificuldade. Flexões com joelhos podem evoluir para normais; pontes de glúteos podem evoluir para unilaterais.</p><p>Nos blocos difíceis, tenta manter 1–3 repetições de margem com técnica controlada. Pausa para descansar: não é uma corrida.</p></article>
+        <article class="info-card"><h3>Quando os pesos ajudam</h3><p>São opcionais no plano, mas úteis quando o peso corporal já não desafia, sobretudo para costas, bíceps e pernas. Encontra a sessão com halteres em Upper body → Material.</p><p>Sem resistência para puxar, os movimentos de costas no tapete têm limites para hipertrofia. Não é preciso comprar material já; tem isso em conta ao avaliar progressos.</p></article>
+      </div>
+      <details class="plan-details"><summary>Exemplos de semanas flexíveis</summary><ul><li><strong>2 dias:</strong> total body · descanso · total body. Uma base possível, com a limitação das puxadas sem carga.</li><li><strong>3 dias:</strong> total body · descanso · total body · descanso · total body. Alterna vídeos sem deixar de repetir movimentos-base.</li><li><strong>4 dias:</strong> upper · lower · descanso · upper · lower. Não precisas de core extra depois de todas as sessões.</li><li><strong>Dia adicional:</strong> caminhada, cardio confortável ou mobilidade; não precisa de ser força intensa.</li></ul><p>Cerca de 48 horas entre sessões exigentes do mesmo músculo é uma referência inicial, não uma regra universal; espera mais se a recuperação estiver incompleta.</p></details>
+      <details class="plan-details"><summary>Core, recuperação e progresso</summary><ul><li>Uma sessão específica de core de 15–20 minutos pode ser feita isoladamente. Começa com 1–2 blocos por semana, contando também o core do total/upper body.</li><li>Avalia repetições, variantes e controlo a cada 4 semanas. A balança não mede sozinha o ganho de músculo.</li><li>Mais suor ou dor muscular não significam mais crescimento. Dorme e alimenta-te o suficiente para recuperar.</li><li>Interrompe perante dor aguda/articular, tonturas ou perda de controlo. Dor persistente merece avaliação profissional.</li></ul></details>
+      </section>
+      <p class="sources">Base geral: <a href="https://acsm.org/resistance-training-guidelines-update-2026/" target="_blank" rel="noopener noreferrer">ACSM — treino de força, 2026</a>. Seleção baseada em títulos e descrições públicas dos vídeos, consultados em 30/08/2026, não numa visualização integral. A disponibilidade pode mudar.</p>
+    </main>
+    <main class="wrap view" id="mariana-food" hidden>
+      <section class="food-hero"><div><div class="overline">Mariana · apoiar o ganho muscular</div><h1>Energia para treinar.<br><em>Comida para recuperar.</em></h1></div><p>O objetivo indicado não é emagrecer. Não copies o défice calórico nem as porções do Manel. Começa com refeições regulares e ajusta à fome, recuperação e evolução da força.</p></section>
+      <section class="goal-box"><div><h2>Comer o suficiente faz parte do plano</h2><p>Não há dados suficientes para fixar calorias. Mantém uma alimentação suficiente e variada; se o peso estiver a cair ou houver fome/fadiga persistente, revê a quantidade. Ganhar músculo não exige batidos nem comer em excesso.</p></div><div class="target"><span>Referência prática para 50 kg · adulta saudável</span><strong>80–100 g de proteína/dia</strong><span>Cerca de 1,6–2 g/kg. Por exemplo, 20–25 g em quatro momentos; não é necessário acertar ao grama.</span></div></section>
+      <section class="food-section"><h2>Antes e depois, sem complicar</h2><div class="timing-grid">
+        <article class="info-card"><h3>Antes do treino</h3><p>Se já comeste uma refeição e te sentes bem, não precisas de snack. Com fome, 30–90 min antes, uma banana ou uma fatia de pão são opções simples; ajusta à tolerância.</p></article>
+        <article class="info-card"><h3>Depois do treino</h3><p>Se vais almoçar ou jantar em breve, usa essa refeição: proteína, hidratos e vegetais. Não há urgência de beber um batido assim que o vídeo termina.</p></article>
+        <article class="info-card"><h3>Nos dias de descanso</h3><p>Mantém proteína e refeições regulares: também recuperas fora do treino. Não cortes drasticamente hidratos nem tentes “compensar” por não treinar.</p></article>
+      </div></section>
+      <section class="food-section"><h2>Opções vegetarianas e vegan</h2><p class="lead">Sugestões, não uma dieta fechada. Quantidades exemplificativas; confirma os rótulos, porque os valores variam.</p><div class="foods-grid">
+        <article class="info-card"><h3>Pequeno-almoço ou lanche</h3><p>Aveia + leite/bebida de soja + fruta. Para reforçar proteína, usa skyr, iogurte de soja proteico ou, opcionalmente, proteína vegetal. Uma bebida de aveia/amêndoa não costuma fornecer a mesma proteína que soja ou leite.</p></article>
+        <article class="info-card"><h3>Refeição principal</h3><p>Exemplos: 150–200 g de tofu firme, 120–150 g de tempeh, ou leguminosas com tofu/soja. Junta arroz, massa, pão ou batata, legumes e alguma gordura. Não são equivalências exatas de proteína ou calorias.</p></article>
+        <article class="info-card"><h3>Se incluir ovos e leite</h3><p>Skyr/quark, leite, ovos e queijo fresco podem ajudar. Dois ovos dão aproximadamente 12–14 g de proteína: podem precisar de outra fonte para uma refeição mais proteica.</p><p>Se a alimentação for vegan, garante uma fonte fiável de B12 e bebidas vegetais fortificadas; necessidades individuais pedem orientação.</p></article>
+      </div></section>
+      <p class="sources">Referências: <a href="https://pubmed.ncbi.nlm.nih.gov/28642676/" target="_blank" rel="noopener noreferrer">ISSN — proteína e exercício</a> · <a href="https://www.bda.uk.com/resource/sport-exercise-nutrition.html" target="_blank" rel="noopener noreferrer">BDA — nutrição no desporto</a>. Orientação geral para adulta saudável, não prescrição clínica; a idade e as necessidades individuais da Mariana ainda não foram indicadas.</p>
+    </main>
+  </div>
+  <footer class="wrap"><strong>Treino em Casa · Manel &amp; Mariana</strong><span>Ouve o teu corpo. Dor muscular pode ocorrer; não é necessária para progredir.</span></footer>
+  <script>
+    const data={
+  "forca": {
+    "title": "Corpo inteiro",
+    "description": "Força masculina com peso corporal: peito, braços, pernas e core.",
+    "color": "var(--lime)",
+    "guide": "Escolhe uma sessão principal. Para ganhar músculo, repete 2–3 vídeos-base durante várias semanas e progride nas variantes. Corpo inteiro sem material trabalha bem peito, tríceps, pernas e core, mas continua limitado para costas e bíceps por faltar um movimento de puxar com resistência.",
+    "items": [
+      [
+        "Corpo inteiro com aquecimento",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Sessão completa, sem repetições e sem material.",
+        "UIPvIYsjfpo"
+      ],
+      [
+        "Corpo inteiro — força e cardio",
+        "Rowan Row",
+        20,
+        "Intermédio",
+        "Força, cardio e mobilidade numa só sessão.",
+        "PqKf0GEDUUU"
+      ],
+      [
+        "Corpo inteiro clássico",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Sessão masculina de peso corporal.",
+        "oAPCPjnU1wA"
+      ],
+      [
+        "Treino da manhã — corpo inteiro",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Sessão global sem equipamento.",
+        "yF4B0OPAOJY"
+      ],
+      [
+        "Corpo inteiro intenso",
+        "BullyJuice",
+        20,
+        "Avançado",
+        "Ritmo exigente; pausa para preservar a técnica.",
+        "ANZoU4QYiHE"
+      ],
+      [
+        "Tronco avançado em sessão longa",
+        "Rowan Row",
+        30,
+        "Avançado",
+        "Ênfase superior com volume elevado de peso corporal.",
+        "qOjXsxi2MG8"
+      ]
+    ]
+  },
+  "superior": {
+    "title": "Peito, costas & braços",
+    "description": "Tronco masculino completo, com opções intermédias e avançadas.",
+    "color": "var(--coral)",
+    "guide": "Escolhe um treino completo de tronco. Flexões desenvolvem peito, ombros e tríceps; o trabalho de costas no chão é complementar. Para crescimento visível de dorsais e bíceps, mantém no ginásio remadas, puxadas e curls com progressão de carga.",
+    "items": [
+      [
+        "Upper body completo — 30 minutos",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Peito, ombros, braços e costas; sem material.",
+        "qOjXsxi2MG8"
+      ],
+      [
+        "Upper body completo — 20 minutos",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Sessão masculina de tronco com peso corporal.",
+        "mm47bCaCzpQ"
+      ],
+      [
+        "Tronco completo — 10 minutos",
+        "Fraser Wilson",
+        10,
+        "Intermédio",
+        "Peito, costas, abdominais, braços e ombros.",
+        "7s4d7PBQCow"
+      ],
+      [
+        "Peito, ombros e tríceps",
+        "Chris Heria",
+        20,
+        "Avançado",
+        "Push day avançado sem pesos.",
+        "QyH1GVnM-wM"
+      ],
+      [
+        "Corpo inteiro com bloco superior",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Inclui uma secção dedicada ao tronco.",
+        "UIPvIYsjfpo"
+      ],
+      [
+        "Peito e ombros em casa",
+        "Fraser Wilson",
+        10,
+        "Avançado",
+        "Bloco avançado de empurrar para a parte superior.",
+        "WsFMkXBJEvU"
+      ]
+    ]
+  },
+  "peito": {
+    "title": "Peito & tríceps",
+    "description": "Flexões progressivas para peito, ombros e tríceps.",
+    "color": "var(--coral)",
+    "guide": "Escolhe apenas um vídeo. As opções avançadas acumulam muitas flexões: usa uma variante que permita amplitude controlada e deixa 48–72 horas antes de outro treino duro de peito. Para continuar a crescer quando as flexões comuns ficam fáceis, progride para descidas lentas, pausas, pés elevados ou supino com carga.",
+    "items": [
+      [
+        "Peito em 7 minutos",
+        "Chris Heria",
+        7,
+        "Intermédio",
+        "Sessão guiada e compacta; usa uma superfície elevada em algumas variantes.",
+        "dtm1ZPlp7AU"
+      ],
+      [
+        "Peito sem equipamento",
+        "THENX / Chris Heria",
+        15,
+        "Intermédio",
+        "Variações de flexões para todo o peito.",
+        "BkS1-El_WlE"
+      ],
+      [
+        "Peito em 10 minutos",
+        "Fraser Wilson",
+        10,
+        "Intermédio",
+        "Treino masculino de peito com peso corporal.",
+        "3IOiS6-v5FI"
+      ],
+      [
+        "Peito e tríceps — push-ups",
+        "Chris Heria",
+        15,
+        "Avançado",
+        "Volume elevado de flexões; adapta antes de perder amplitude.",
+        "QyH1GVnM-wM"
+      ],
+      [
+        "Peito só com flexões",
+        "Chris Heria",
+        14,
+        "Avançado",
+        "Sequência avançada de push-ups.",
+        "nc2WOycihQo"
+      ],
+      [
+        "Peito, ombros e tríceps",
+        "Fraser Wilson",
+        10,
+        "Avançado",
+        "Bloco curto para músculos de empurrar.",
+        "WsFMkXBJEvU"
+      ]
+    ]
+  },
+  "costas": {
+    "title": "Costas & postura",
+    "description": "Costas com peso corporal, mais opções completas de tronco.",
+    "color": "var(--lime)",
+    "guide": "Estes vídeos masculinos melhoram controlo escapular, postura e resistência posterior, mas não conseguem reproduzir bem uma puxada pesada. Para costas mais largas e espessas — uma das mudanças visuais mais importantes — prioriza no ginásio puxada vertical e remada horizontal, 2 vezes por semana, com progressão.",
+    "items": [
+      [
+        "Costas em casa",
+        "Rowan Row",
+        15,
+        "Intermédio",
+        "Reverse snow angels, extensões, pulse rows e supermans.",
+        "rLOaX9pp7xM"
+      ],
+      [
+        "Costas sem material — bloco curto",
+        "BullyJuice",
+        5,
+        "Iniciante",
+        "Complemento posterior; não substitui remadas com carga.",
+        "lhBRwpUc0tg"
+      ],
+      [
+        "Costas sem material — 10 minutos",
+        "BullyJuice",
+        10,
+        "Intermédio",
+        "Rotina posterior no chão.",
+        "5oG8cMfKx9I"
+      ],
+      [
+        "Upper body com costas",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Sessão completa de tronco com trabalho posterior.",
+        "qOjXsxi2MG8"
+      ],
+      [
+        "Tronco avançado",
+        "Fraser Wilson",
+        10,
+        "Avançado",
+        "Sessão global superior; costas continuam limitadas sem puxada.",
+        "7s4d7PBQCow"
+      ],
+      [
+        "Corpo inteiro com controlo posterior",
+        "Rowan Row",
+        30,
+        "Avançado",
+        "Sessão completa; complementa a rotina específica de costas.",
+        "UIPvIYsjfpo"
+      ]
+    ]
+  },
+  "bracos": {
+    "title": "Braços & ombros",
+    "description": "Tríceps e ombros com bodyweight; bíceps exigem resistência de puxar.",
+    "color": "var(--coral)",
+    "guide": "Sem material, os vídeos atingem sobretudo tríceps e ombros através de flexões e apoios. Para braços maiores, não ignores bíceps: curls, remadas e puxadas no ginásio são muito mais eficazes. Usa os blocos curtos como complemento, não como substituto de progressão de carga.",
+    "items": [
+      [
+        "Braços — complemento curto",
+        "BullyJuice",
+        5,
+        "Iniciante",
+        "Resistência dos braços; volume introdutório.",
+        "RTF4ADblouI"
+      ],
+      [
+        "Ombros sem equipamento",
+        "BullyJuice",
+        10,
+        "Intermédio",
+        "Bloco de ombros com peso corporal.",
+        "AczQuVZBd0A"
+      ],
+      [
+        "Upper body completo",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Braços, peito e ombros numa sessão completa.",
+        "mm47bCaCzpQ"
+      ],
+      [
+        "Upper body masculino — 30 minutos",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Sessão completa com bastante trabalho de braços.",
+        "qOjXsxi2MG8"
+      ],
+      [
+        "Peito e tríceps avançados",
+        "Chris Heria",
+        15,
+        "Avançado",
+        "Flexões avançadas para tríceps, peito e ombros.",
+        "QyH1GVnM-wM"
+      ],
+      [
+        "Tronco avançado compacto",
+        "Fraser Wilson",
+        10,
+        "Avançado",
+        "Bloco exigente para braços e ombros.",
+        "7s4d7PBQCow"
+      ]
+    ]
+  },
+  "core": {
+    "title": "Abdominais & core",
+    "description": "Core masculino com progressão até sessões avançadas.",
+    "color": "var(--violet)",
+    "guide": "Faz 1 vídeo, 2–3 vezes por semana no máximo para começar, contando também o core dos treinos completos. Abdominais mais fortes ajudam postura e desempenho, mas não retiram gordura especificamente da barriga; a definição aparece com perda global de gordura e manutenção de músculo.",
+    "items": [
+      [
+        "Core completo — 20 minutos",
+        "Rowan Row",
+        20,
+        "Intermédio",
+        "Trabalha core profundo, parte superior, inferior e oblíquos.",
+        "oFCSZ6zY_u8"
+      ],
+      [
+        "Abdominais sem repetições",
+        "Rowan Row",
+        15,
+        "Intermédio",
+        "15 exercícios em formato acompanhado.",
+        "wXwMeoTRiQQ"
+      ],
+      [
+        "Abdominais compactos",
+        "Rowan Row",
+        10,
+        "Intermédio",
+        "Sessão curta para todo o core.",
+        "zCk68EFbFVc"
+      ],
+      [
+        "Lower abs",
+        "BullyJuice",
+        10,
+        "Intermédio",
+        "Ênfase abdominal inferior; controla a lombar.",
+        "iID3FgaKNE0"
+      ],
+      [
+        "Six-pack intenso",
+        "BullyJuice",
+        10,
+        "Avançado",
+        "Sessão exigente; pausa se perderes controlo.",
+        "eQKzCem0eUs"
+      ],
+      [
+        "Core avançado — Fraser Wilson",
+        "Fraser Wilson",
+        10,
+        "Avançado",
+        "Bloco intenso; qualidade antes da velocidade.",
+        "9p7-YC91Q74"
+      ]
+    ]
+  },
+  "pernas": {
+    "title": "Pernas & glúteos",
+    "description": "Pernas masculinas com bodyweight, volume e intensidade.",
+    "color": "var(--lime)",
+    "guide": "Não ignores as pernas: ajudam a construir um físico proporcional e aumentam a capacidade de treino global. Escolhe uma sessão; nas opções avançadas usa amplitude controlada, variantes unilaterais e descidas lentas. Quando o peso corporal deixar de desafiar, agachamento, leg press e peso morto romeno com carga permitem progredir melhor.",
+    "items": [
+      [
+        "Pernas — 20 minutos",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Treino completo de pernas sem equipamento.",
+        "GfUpbhaCK7Y"
+      ],
+      [
+        "Pernas — 10 minutos",
+        "BullyJuice",
+        10,
+        "Intermédio",
+        "Bloco compacto de pernas.",
+        "1JjuaKI1W-U"
+      ],
+      [
+        "Corpo inteiro com secção de pernas",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Inclui trabalho dedicado a quadríceps, posteriores e glúteos.",
+        "UIPvIYsjfpo"
+      ],
+      [
+        "Treino da manhã com pernas",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Sessão global com bastante trabalho inferior.",
+        "yF4B0OPAOJY"
+      ],
+      [
+        "Pernas + HIIT",
+        "BullyJuice",
+        20,
+        "Avançado",
+        "Volume e cardio elevados; faz pausas se necessário.",
+        "ANZoU4QYiHE"
+      ],
+      [
+        "Pernas em circuito avançado",
+        "Rowan Row",
+        20,
+        "Avançado",
+        "Força, cardio e mobilidade com peso corporal.",
+        "PqKf0GEDUUU"
+      ]
+    ]
+  },
+  "cardio": {
+    "title": "Cardio",
+    "description": "Cardio masculino para ajudar o gasto energético e a condição física.",
+    "color": "var(--violet)",
+    "guide": "O cardio ajuda a perder gordura, mas não deve destruir a recuperação da musculação. Mantém a maioria das sessões num ritmo sustentável e limita HIIT intenso a 1–2 vezes por semana. O défice calórico pequeno e a força progressiva são mais importantes para ficar definido sem perder músculo.",
+    "items": [
+      [
+        "Cardio contínuo — 20 minutos",
+        "BullyJuice",
+        20,
+        "Intermédio",
+        "Sessão cardiovascular sem equipamento.",
+        "W5IiasNutB8"
+      ],
+      [
+        "HIIT compacto",
+        "BullyJuice",
+        10,
+        "Intermédio",
+        "Intervalos curtos; ajusta saltos e impacto.",
+        "ANZoU4QYiHE"
+      ],
+      [
+        "Corpo inteiro com final cardiovascular",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Força global seguida de bloco intenso.",
+        "UIPvIYsjfpo"
+      ],
+      [
+        "Força + cardio + mobilidade",
+        "Rowan Row",
+        20,
+        "Intermédio",
+        "Sessão híbrida sem material.",
+        "PqKf0GEDUUU"
+      ],
+      [
+        "HIIT intenso sem repetições",
+        "BullyJuice",
+        20,
+        "Avançado",
+        "Sessão exigente; não usar como recuperação ativa.",
+        "oAPCPjnU1wA"
+      ],
+      [
+        "Cardio avançado — ritmo elevado",
+        "BullyJuice",
+        20,
+        "Avançado",
+        "Opção intensa para quando já tens boa base.",
+        "yF4B0OPAOJY"
+      ]
+    ]
+  },
+  "mobilidade": {
+    "title": "Mobilidade & recuperação",
+    "description": "Mobilidade guiada por treinadores masculinos para recuperar e mover melhor.",
+    "color": "var(--violet)",
+    "guide": "Mobilidade não constrói peito ou braços diretamente, mas ajuda-te a treinar com melhor amplitude e consistência. Escolhe uma rotina confortável nos dias leves. Não forces alongamentos nem uses mobilidade para tentar ultrapassar dor articular.",
+    "items": [
+      [
+        "Flexibilidade de corpo inteiro",
+        "Tom Merrick",
+        20,
+        "Intermédio",
+        "Rotina completa em formato follow-along.",
+        "lPKRiU9u_Hc"
+      ],
+      [
+        "Mobilidade de corpo inteiro",
+        "Tom Merrick",
+        15,
+        "Intermédio",
+        "Sessão dinâmica para articulações e amplitude.",
+        "i6TzP2COtow"
+      ],
+      [
+        "Flexibilidade intermédia",
+        "Tom Merrick",
+        20,
+        "Avançado",
+        "Amplitude mais exigente; não forces posições.",
+        "eQHmKJh20_c"
+      ],
+      [
+        "Força, cardio e mobilidade",
+        "Rowan Row",
+        20,
+        "Intermédio",
+        "Sessão híbrida para um dia ativo.",
+        "PqKf0GEDUUU"
+      ],
+      [
+        "Corpo inteiro com aquecimento",
+        "Rowan Row",
+        30,
+        "Intermédio",
+        "Aquecimento dinâmico e treino global.",
+        "UIPvIYsjfpo"
+      ],
+      [
+        "Mobilidade avançada controlada",
+        "Tom Merrick",
+        20,
+        "Avançado",
+        "Para quem já tem boa base de mobilidade.",
+        "lPKRiU9u_Hc"
+      ]
+    ]
+  }
+};
+    let day='forca',level='Todos',duration=0;
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const go=(name,equipment,type,muscle,reps,cue)=>({name,equipment,type,muscle,reps,cue});
+    const gymGroups={
+      chest:{label:'Peito · empurrar horizontal',muscle:'chest',options:[go('Chest press na máquina','Máquina','press','chest','8–12','Banco regulado para as pegas ficarem à altura do meio do peito; ombros para baixo e para trás.'),go('Supino plano com halteres','Halteres + banco','press','chest','8–12','Pés firmes, antebraços verticais na descida e halteres controlados sem bater no topo.'),go('Press de peito nos cabos','Cabos','press','chest','10–15','Avança um pé, mantém o tronco estável e aproxima as mãos sem encolher os ombros.')]},
+      incline:{label:'Peito superior',muscle:'chest',options:[go('Press inclinado na máquina','Máquina','press','chest','8–12','Ajusta o assento para empurrar em direção à parte superior do peito, sem elevar os ombros.'),go('Supino inclinado com halteres','Halteres + banco','press','chest','8–12','Usa inclinação moderada; desce com controlo e mantém pulsos sobre os cotovelos.'),go('Supino inclinado na Smith','Máquina Smith + banco','press','chest','8–12','Posiciona o banco para a barra descer confortavelmente à parte superior do peito.')]},
+      row:{label:'Costas · remada',muscle:'back',options:[go('Remada sentada na polia','Cabo','row','back','8–12','Começa com braços estendidos e puxa os cotovelos para trás sem balançar o tronco.'),go('Remada com peito apoiado','Halteres + banco','row','back','8–12','Apoia o peito no banco inclinado e conduz os cotovelos para trás, sem encolher os ombros.'),go('Remada na máquina','Máquina','row','back','8–12','Regula o apoio do peito; termina quando os cotovelos passam ligeiramente o tronco.')]},
+      lats:{label:'Dorsais · puxada vertical',muscle:'back',options:[go('Puxada frontal na polia','Máquina de cabos','pull','back','8–12','Puxa a barra para a parte superior do peito; evita puxar atrás da cabeça ou inclinar demasiado.'),go('Elevação assistida','Máquina assistida','pull','back','6–10','Usa assistência suficiente para subir sem impulso e desce com controlo.'),go('Puxada unilateral no cabo','Cabo','pull','back','10–12 / lado','Mantém o tronco estável e conduz o cotovelo para baixo em direção à anca.')]},
+      shoulder:{label:'Ombros · press',muscle:'shoulders',options:[go('Shoulder press na máquina','Máquina','press','shoulders','8–12','Regula o assento para as pegas começarem perto dos ombros; não arqueies excessivamente a lombar.'),go('Press de ombros com halteres','Halteres + banco','press','shoulders','8–12','Costas apoiadas, punhos sobre os cotovelos e movimento controlado acima da cabeça.'),go('Press de ombros na Smith','Máquina Smith + banco','press','shoulders','8–12','Coloca o banco quase vertical e confirma uma trajetória confortável antes de carregar.')]},
+      lateral:{label:'Ombros · deltoide lateral',muscle:'shoulders',options:[go('Elevação lateral no cabo','Cabo','raise','shoulders','12–20','Eleva o braço até perto da linha do ombro, liderando com o cotovelo e sem impulso.'),go('Elevação lateral com halteres','Halteres','raise','shoulders','12–20','Usa carga leve, cotovelos ligeiramente fletidos e evita encolher os ombros.'),go('Elevação lateral na máquina','Máquina','raise','shoulders','12–20','Alinha os cotovelos com os apoios e mantém tensão sem bater os pesos.')]},
+      biceps:{label:'Bíceps',muscle:'biceps',options:[go('Curl de bíceps no cabo','Cabo','curl','biceps','10–15','Mantém cotovelos junto ao tronco e evita usar balanço para mover a carga.'),go('Curl alternado com halteres','Halteres','curl','biceps','8–12 / lado','Roda a palma para cima durante a subida e controla totalmente a descida.'),go('Curl Scott na máquina','Máquina','curl','biceps','10–15','Apoia os braços, evita esticar o cotovelo com força no fundo e não levantes os ombros.')]},
+      triceps:{label:'Tríceps',muscle:'triceps',options:[go('Extensão de tríceps com corda','Cabo','triceps','triceps','10–15','Cotovelos fixos junto ao corpo; estende sem mover os ombros.'),go('Extensão acima da cabeça no cabo','Cabo + corda','triceps','triceps','10–15','Mantém costelas controladas e cotovelos apontados em frente enquanto estendes.'),go('Dip assistido na máquina','Máquina assistida','triceps','triceps','8–12','Tronco estável e amplitude confortável para os ombros; usa assistência se necessário.')]},
+      squat:{label:'Quadríceps · padrão de agachamento',muscle:'quads',options:[go('Leg press','Máquina','squat','quads','8–12','Pés inteiros na plataforma; desce só até manter a bacia apoiada e joelhos alinhados.'),go('Hack squat','Máquina','squat','quads','8–12','Mantém costas no apoio e joelhos na direção dos pés, sem bloquear com força no topo.'),go('Goblet squat','Haltere','squat','quads','10–15','Segura o haltere junto ao peito, mantém o pé apoiado e desce com controlo.')]},
+      hinge:{label:'Posterior · dobradiça da anca',muscle:'hamstrings',options:[go('Peso morto romeno com halteres','Halteres','hinge','hamstrings','8–12','Empurra a anca para trás, mantém os halteres perto das pernas e a coluna estável.'),go('Peso morto romeno na Smith','Máquina Smith','hinge','hamstrings','8–12','Pés ligeiramente à frente da barra; procura tensão nos posteriores sem arredondar as costas.'),go('Pull-through no cabo','Cabo + corda','hinge','hamstrings','10–15','De costas para a polia, leva a anca para trás e termina contraindo os glúteos sem hiperextender.')]},
+      hamcurl:{label:'Posterior da coxa · flexão do joelho',muscle:'hamstrings',options:[go('Leg curl sentado','Máquina','curlleg','hamstrings','10–15','Alinha o joelho com o eixo da máquina e prende bem a coxa antes de fletir.'),go('Leg curl deitado','Máquina','curlleg','hamstrings','10–15','Mantém a bacia no apoio e evita arquear a lombar ao aproximar os calcanhares.'),go('Leg curl com haltere','Haltere + banco','curlleg','hamstrings','10–15','Prende um haltere leve entre os pés com segurança e usa amplitude controlada.')]},
+      quads:{label:'Quadríceps · unilateral/isolamento',muscle:'quads',options:[go('Extensão de pernas','Máquina','extendleg','quads','10–15','Alinha o joelho com o eixo, estende com controlo e não levantes a anca do assento.'),go('Agachamento búlgaro','Halteres + banco','squat','quads','8–12 / lado','Mantém o pé da frente inteiro no chão e desce verticalmente com equilíbrio.'),go('Split squat na Smith','Máquina Smith','squat','quads','8–12 / lado','Escolhe uma passada estável e usa a barra guiada sem forçar uma amplitude desconfortável.')]},
+      glutes:{label:'Glúteos',muscle:'glutes',options:[go('Hip thrust na máquina','Máquina','bridge','glutes','8–12','Apoio sobre a bacia, queixo ligeiramente recolhido e pausa no topo sem arquear a lombar.'),go('Hip thrust na Smith','Smith + banco','bridge','glutes','8–12','Coloca proteção na barra, banco estável e pés numa posição que permita canelas quase verticais no topo.'),go('Hip thrust com haltere','Haltere + banco','bridge','glutes','10–15','Apoia o haltere sobre a bacia com proteção e sobe através dos calcanhares.')]},
+      calves:{label:'Gémeos / panturrilhas',muscle:'calves',options:[go('Elevação de gémeos em pé','Máquina','calf','calves','12–20','Desce o calcanhar com controlo, sobe ao máximo confortável e evita saltar.'),go('Elevação de gémeos sentado','Máquina','calf','calves','12–20','Mantém o apoio sobre as coxas e faz uma pausa curta no topo e no fundo.'),go('Elevação unilateral com haltere','Haltere + apoio','calf','calves','12–20 / lado','Usa uma mão para equilíbrio e move apenas o tornozelo, sem balançar.')]},
+      core:{label:'Core / estabilidade',muscle:'core',options:[go('Crunch no cabo','Cabo + corda','core','core','10–15','Flete o tronco aproximando as costelas da bacia; evita transformar o movimento numa puxada de braços.'),go('Pallof press','Cabo','core','core','10–15 / lado','Pressiona as mãos à frente sem deixar o tronco rodar; pés firmes e costelas controladas.'),go('Crunch na máquina','Máquina','core','core','10–15','Regula os apoios, move o tronco de forma controlada e não puxes com os braços.')]},
+      rear:{label:'Ombro posterior e postura',muscle:'back',options:[go('Reverse pec deck','Máquina','fly','back','12–20','Peito no apoio, braços alinhados e abre sem encolher os ombros.'),go('Reverse fly no cabo','Cabos','fly','back','12–20','Cruza os cabos, mantém braços quase estendidos e abre até à linha do tronco.'),go('Reverse fly com halteres','Halteres + banco','fly','back','12–20','Peito apoiado num banco inclinado; usa carga leve e movimento controlado.')]}
+    };
+    gymGroups.tricepsLong={label:'Tríceps · alternativa acima da cabeça',muscle:'triceps',options:[gymGroups.triceps.options[1],gymGroups.triceps.options[2],gymGroups.triceps.options[0]]};
+    const gymPlans={
+      upper:{title:'Upper body · peito, costas e braços',description:'Peito e costas têm prioridade; ombros e um segundo press entram quando há mais tempo.',groups:['chest','row','lats','biceps','triceps','shoulder','incline'],counts:{30:5,40:6,45:7}},
+      lower:{title:'Lower body · pernas e glúteos',description:'Agachamento e dobradiça primeiro; isolamento e core entram progressivamente.',groups:['squat','hinge','quads','glutes','calves','hamcurl','core'],counts:{30:5,40:6,45:7}},
+      full:{title:'Full body · corpo inteiro',description:'Um padrão principal de pernas, peito, costas, posterior e core; acessórios só com tempo.',groups:['squat','chest','row','hinge','core','lats','shoulder'],counts:{30:5,40:6,45:7}},
+      push:{title:'Push · peito, ombros e tríceps',description:'Presses primeiro; isolamento de tríceps e core completam as versões mais longas.',groups:['chest','incline','shoulder','lateral','triceps','tricepsLong','core'],counts:{30:5,40:6,45:7}},
+      pull:{title:'Pull · costas, bíceps e posterior',description:'Puxada e remada primeiro; cadeia posterior e core completam a sessão.',groups:['lats','row','rear','biceps','hinge','hamcurl','core'],counts:{30:5,40:6,45:7}}
+    };
+    const gymState={plan:'upper',time:40,choices:{}};
+    function muscleOverlay(m){const shapes={chest:'<ellipse cx="292" cy="57" rx="13" ry="7"/>',back:'<path d="M278 49 Q292 42 306 49 L302 79 Q292 86 282 79Z"/>',shoulders:'<circle cx="277" cy="53" r="5"/><circle cx="307" cy="53" r="5"/>',biceps:'<rect x="270" y="58" width="6" height="17" rx="3"/><rect x="308" y="58" width="6" height="17" rx="3"/>',triceps:'<rect x="269" y="59" width="6" height="18" rx="3"/><rect x="309" y="59" width="6" height="18" rx="3"/>',quads:'<rect x="282" y="91" width="8" height="27" rx="4"/><rect x="295" y="91" width="8" height="27" rx="4"/>',hamstrings:'<rect x="281" y="91" width="9" height="28" rx="4"/><rect x="295" y="91" width="9" height="28" rx="4"/>',glutes:'<ellipse cx="285" cy="88" rx="8" ry="7"/><ellipse cx="299" cy="88" rx="8" ry="7"/>',calves:'<rect x="282" y="123" width="7" height="22" rx="4"/><rect x="296" y="123" width="7" height="22" rx="4"/>',core:'<rect x="285" y="62" width="14" height="25" rx="5"/>'};return shapes[m]||shapes.core}
+    function pose(type,end,x){let torso='<circle cx="'+x+'" cy="27" r="8"/><path d="M'+x+' 36 L'+x+' 76"/>';let limbs='';if(type==='squat'){const y=end?18:0;torso='<circle cx="'+x+'" cy="'+(27+y)+'" r="8"/><path d="M'+x+' '+(36+y)+' L'+x+' '+(76+y)+'"/>';limbs=end?'<path d="M'+x+' 94 L'+(x-18)+' 115 L'+(x-6)+' 143 M'+x+' 94 L'+(x+18)+' 115 L'+(x+8)+' 143 M'+x+' 60 L'+(x-17)+' 70 M'+x+' 60 L'+(x+17)+' 70"/>':'<path d="M'+x+' 76 L'+(x-10)+' 112 L'+(x-10)+' 145 M'+x+' 76 L'+(x+10)+' 112 L'+(x+10)+' 145 M'+x+' 52 L'+(x-17)+' 60 M'+x+' 52 L'+(x+17)+' 60"/>'}else if(type==='hinge'){torso=end?'<circle cx="'+(x+22)+'" cy="52" r="8"/><path d="M'+x+' 78 L'+(x+20)+' 59"/>':torso;limbs=end?'<path d="M'+x+' 78 L'+(x-8)+' 111 L'+(x-8)+' 145 M'+x+' 78 L'+(x+10)+' 111 L'+(x+10)+' 145 M'+(x+14)+' 65 L'+(x+25)+' 94 M'+(x+17)+' 62 L'+(x+32)+' 90"/>':'<path d="M'+x+' 76 L'+(x-10)+' 111 L'+(x-10)+' 145 M'+x+' 76 L'+(x+10)+' 111 L'+(x+10)+' 145 M'+x+' 48 L'+(x-10)+' 80 M'+x+' 48 L'+(x+10)+' 80"/>'}else if(['press','raise','pull','row','fly','curl','triceps'].includes(type)){const arm=end?({press:'M0 48 L-14 25 M0 48 L14 25',raise:'M0 48 L-27 48 M0 48 L27 48',pull:'M0 48 L-15 68 M0 48 L15 68',row:'M0 48 L-18 61 M0 48 L18 61',fly:'M0 48 L-28 51 M0 48 L28 51',curl:'M0 48 L-18 62 L-10 42 M0 48 L18 62 L10 42',triceps:'M0 44 L-10 65 L-10 86 M0 44 L10 65 L10 86'}[type]):({press:'M0 48 L-19 61 L-10 75 M0 48 L19 61 L10 75',raise:'M0 48 L-12 76 M0 48 L12 76',pull:'M0 48 L-18 24 M0 48 L18 24',row:'M0 48 L-28 65 M0 48 L28 65',fly:'M0 48 L-16 72 M0 48 L16 72',curl:'M0 48 L-12 77 M0 48 L12 77',triceps:'M0 44 L-10 65 L-1 48 M0 44 L10 65 L1 48'}[type]);limbs='<path d="'+arm.replaceAll('M0','M'+x)+'"/><path d="M'+x+' 76 L'+(x-10)+' 111 L'+(x-10)+' 145 M'+x+' 76 L'+(x+10)+' 111 L'+(x+10)+' 145"/>'}else if(type==='bridge'){torso='<circle cx="'+(x+35)+'" cy="'+(end?82:97)+'" r="8"/><path d="M'+(x-5)+' '+(end?80:100)+' L'+(x+27)+' '+(end?88:101)+'"/>';limbs='<path d="M'+(x-5)+' '+(end?80:100)+' L'+(x-25)+' 120 L'+(x-5)+' 140 M'+(x-5)+' '+(end?80:100)+' L'+(x+8)+' 120 L'+(x+28)+' 140"/>'}else{limbs='<path d="M'+x+' 48 L'+(x-14)+' 75 M'+x+' 48 L'+(x+14)+' 75 M'+x+' 76 L'+(x-10)+' 112 L'+(x-10)+' 145 M'+x+' 76 L'+(x+10)+' 112 L'+(x+10)+' 145"/>'}return '<g class="person">'+torso+limbs+'</g>'}
+    function poseMuscle(m,type,end,x){let y=0;if(type==='squat'&&end)y=18;if(type==='bridge'){const bx=x+2,by=end?83:101;return m==='glutes'?'<ellipse cx="'+bx+'" cy="'+by+'" rx="10" ry="7"/>':m==='hamstrings'?'<path d="M'+(bx-10)+' '+(by+5)+' l-16 24 M'+(bx+4)+' '+(by+4)+' l11 25"/>':''}const shapes={chest:'<ellipse cx="'+x+'" cy="'+(51+y)+'" rx="12" ry="7"/>',back:'<path d="M'+(x-11)+' '+(43+y)+' Q'+x+' '+(38+y)+' '+(x+11)+' '+(43+y)+' L'+(x+8)+' '+(70+y)+' Q'+x+' '+(77+y)+' '+(x-8)+' '+(70+y)+'Z"/>',shoulders:'<circle cx="'+(x-13)+'" cy="'+(49+y)+'" r="6"/><circle cx="'+(x+13)+'" cy="'+(49+y)+'" r="6"/>',biceps:'<ellipse cx="'+(x-14)+'" cy="'+(62+y)+'" rx="5" ry="10"/><ellipse cx="'+(x+14)+'" cy="'+(62+y)+'" rx="5" ry="10"/>',triceps:'<ellipse cx="'+(x-13)+'" cy="'+(63+y)+'" rx="5" ry="10"/><ellipse cx="'+(x+13)+'" cy="'+(63+y)+'" rx="5" ry="10"/>',quads:'<ellipse cx="'+(x-8)+'" cy="'+(100+y)+'" rx="6" ry="16"/><ellipse cx="'+(x+8)+'" cy="'+(100+y)+'" rx="6" ry="16"/>',hamstrings:'<ellipse cx="'+(x-8)+'" cy="'+(101+y)+'" rx="6" ry="16"/><ellipse cx="'+(x+8)+'" cy="'+(101+y)+'" rx="6" ry="16"/>',glutes:'<ellipse cx="'+x+'" cy="'+(80+y)+'" rx="12" ry="8"/>',calves:'<ellipse cx="'+(x-10)+'" cy="'+(132+y)+'" rx="5" ry="12"/><ellipse cx="'+(x+10)+'" cy="'+(132+y)+'" rx="5" ry="12"/>',core:'<rect x="'+(x-8)+'" y="'+(57+y)+'" width="16" height="22" rx="6"/>'};return shapes[m]||shapes.core}
+    function exerciseEquipment(type,end,x){if(type==='press')return '<g class="gear"><path d="M'+(x-34)+' 92 H'+(x+34)+' M'+(x-25)+' 92 L'+(x-30)+' 145 M'+(x+25)+' 92 L'+(x+30)+' 145"/><path d="M'+(x-24)+' '+(end?24:74)+' H'+(x+24)+'"/><circle cx="'+(x-27)+'" cy="'+(end?24:74)+'" r="5"/><circle cx="'+(x+27)+'" cy="'+(end?24:74)+'" r="5"/></g>';if(type==='pull')return '<g class="gear"><path d="M'+(x-31)+' 18 H'+(x+31)+' M'+(x+27)+' 18 V70"/><path d="M'+(x-16)+' '+(end?72:24)+' H'+(x+16)+' '+(end?72:24)+'"/></g>';if(type==='row')return '<g class="gear"><path d="M'+(x-38)+' 67 H'+(x-24)+' M'+(x-38)+' 40 V105 M'+(x-38)+' 40 H'+(x-22)+'"/><circle cx="'+(x-38)+'" cy="67" r="4"/></g>';if(['curl','raise','fly','hinge'].includes(type))return '<g class="weight"><circle cx="'+(x-18)+'" cy="'+(end?55:78)+'" r="5"/><circle cx="'+(x+18)+'" cy="'+(end?55:78)+'" r="5"/></g>';if(type==='triceps')return '<g class="gear"><path d="M'+(x+31)+' 18 V90 M'+(x+18)+' 18 H'+(x+31)+'"/><circle cx="'+(x+31)+'" cy="55" r="4"/></g>';if(type==='bridge')return '<g class="gear"><path d="M'+(x+20)+' 105 H'+(x+55)+' M'+(x+50)+' 105 V140"/><path d="M'+(x-19)+' '+(end?78:98)+' H'+(x+19)+'"/></g>';if(['squat','calf','extendleg','curlleg'].includes(type))return '<g class="gear"><path d="M'+(x-32)+' 148 H'+(x+32)+' M'+(x+27)+' 148 V116"/></g>';return ''}
+    function anatomyPose(type,end,x,muscle){const raw=pose(type,end,x);const outline=raw.replace('class="person"','class="body outline"'),fill=raw.replace('class="person"','class="body fill"');return exerciseEquipment(type,end,x)+outline+fill+'<g class="active">'+poseMuscle(muscle,type,end,x)+'</g>'}
+    function gymDiagram(type,muscle,label){return '<svg viewBox="0 0 340 165" role="img" aria-label="Ilustração anatómica: '+esc(label)+'. Posição inicial, posição final e músculo principal destacado"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#181916"/></marker><linearGradient id="bodyShade" x1="0" x2="1"><stop offset="0" stop-color="#ececea"/><stop offset=".55" stop-color="#a9aaa7"/><stop offset="1" stop-color="#747673"/></linearGradient></defs><style>.body{fill:none;stroke-linecap:round;stroke-linejoin:round}.body.outline{stroke:#292a28;stroke-width:15}.body.outline circle{fill:#292a28;stroke-width:3}.body.fill{stroke:url(#bodyShade);stroke-width:10}.body.fill circle{fill:url(#bodyShade);stroke:#686a67;stroke-width:1.5}.active{fill:#df4f3c;stroke:#9f271e;stroke-width:1.2;opacity:.95}.active path{fill:#df4f3c;stroke:#9f271e;stroke-width:5;stroke-linecap:round}.gear{fill:none;stroke:#50524f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.gear circle,.weight circle{fill:#272826;stroke:#050505;stroke-width:2}.weight{fill:#272826;stroke:#050505;stroke-width:2}.map{fill:#b9bab7;stroke:#383936;stroke-width:2.5}.map path{fill:none}.hot{fill:#df4f3c;stroke:#9f271e;stroke-width:1}.lab{font:700 9px Arial;fill:#62645d}.arr{stroke:#181916;stroke-width:2;marker-end:url(#arrow)}</style>'+anatomyPose(type,false,48,muscle)+anatomyPose(type,true,145,muscle)+'<path class="arr" d="M84 82 L112 82"/><text class="lab" x="27" y="158">INÍCIO</text><text class="lab" x="128" y="158">FIM</text><g class="map"><circle cx="292" cy="28" r="10"/><path d="M278 43 Q292 36 306 43 L304 86 Q292 94 280 86Z"/><path d="M280 52 L268 84 M304 52 L316 84 M286 89 L282 145 M298 89 L302 145"/></g><g class="hot">'+muscleOverlay(muscle)+'</g><text class="lab" x="262" y="158">MÚSCULO</text></svg>'}
+    const gymPhotoIds={'Chest press na máquina':'Leverage_Chest_Press','Supino plano com halteres':'Dumbbell_Bench_Press','Press de peito nos cabos':'Cable_Crossover','Press inclinado na máquina':'Leverage_Incline_Chest_Press','Supino inclinado com halteres':'Incline_Dumbbell_Press','Supino inclinado na Smith':'Smith_Machine_Incline_Bench_Press','Remada sentada na polia':'Seated_Cable_Rows','Remada com peito apoiado':'Incline_Bench_Pull','Remada na máquina':'Seated_Cable_Rows','Puxada frontal na polia':'Wide-Grip_Lat_Pulldown','Elevação assistida':'Pullups','Puxada unilateral no cabo':'Kneeling_Single-Arm_High_Pulley_Row','Shoulder press na máquina':'Machine_Shoulder_(Military)_Press','Press de ombros com halteres':'Dumbbell_Shoulder_Press','Press de ombros na Smith':'Smith_Machine_Overhead_Shoulder_Press','Elevação lateral no cabo':'Cable_Seated_Lateral_Raise','Elevação lateral com halteres':'Side_Lateral_Raise','Elevação lateral na máquina':'Side_Lateral_Raise','Curl de bíceps no cabo':'High_Cable_Curls','Curl alternado com halteres':'Alternate_Hammer_Curl','Curl Scott na máquina':'Preacher_Curl','Extensão de tríceps com corda':'Triceps_Pushdown_-_Rope_Attachment','Extensão acima da cabeça no cabo':'Triceps_Overhead_Extension_with_Rope','Dip assistido na máquina':'Dips_-_Triceps_Version','Leg press':'Leg_Press','Hack squat':'Hack_Squat','Goblet squat':'Goblet_Squat','Peso morto romeno com halteres':'Romanian_Deadlift_With_Dumbbells','Peso morto romeno na Smith':'Romanian_Deadlift','Pull-through no cabo':'Pull_Through','Leg curl sentado':'Seated_Leg_Curl','Leg curl deitado':'Lying_Leg_Curls','Leg curl com haltere':'Ball_Leg_Curl','Extensão de pernas':'Leg_Extensions','Agachamento búlgaro':'Split_Squat_with_Dumbbells','Split squat na Smith':'Smith_Machine_Squat','Hip thrust na máquina':'Barbell_Hip_Thrust','Hip thrust na Smith':'Barbell_Hip_Thrust','Hip thrust com haltere':'Butt_Lift_(Bridge)','Elevação de gémeos em pé':'Standing_Calf_Raises','Elevação de gémeos sentado':'Seated_Calf_Raise','Elevação unilateral com haltere':'Standing_Dumbbell_Calf_Raise','Crunch no cabo':'Cable_Crunch','Pallof press':'Pallof_Press','Crunch na máquina':'Ab_Crunch_Machine','Reverse pec deck':'Reverse_Machine_Flyes','Reverse fly no cabo':'Cable_Rear_Delt_Fly','Reverse fly com halteres':'Reverse_Flyes'};
+    let gymLog={};try{gymLog=JSON.parse(localStorage.getItem('manelGymLog')||'{}')}catch(e){gymLog={}}
+    const saveGymLog=()=>{try{localStorage.setItem('manelGymLog',JSON.stringify(gymLog))}catch(e){}}
+    function gymSetKey(group,choice,set){return gymState.plan+'|'+group+'|'+choice+'|'+set}
+    function gymSetValue(group,choice,set,o){const key=gymSetKey(group,choice,set),lower=Number((o.reps.match(/\d+/)||[10])[0]),body=/corporal/i.test(o.equipment),base=['quads','hamstrings','glutes'].includes(o.muscle)?40:['back','chest'].includes(o.muscle)?20:body?0:10;return gymLog[key]||{kg:base,reps:lower,done:false}}
+    function planPhoto(o){const id=gymPhotoIds[o.name];if(!id)return '<div class="exercise-figure">'+gymDiagram(o.type,o.muscle,o.name)+'</div>';const src=n=>'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/'+encodeURIComponent(id)+'/'+n+'.jpg';return '<div class="photo-pair"><span class="start">INÍCIO</span><span class="finish">FIM</span><img loading="lazy" src="'+src(0)+'" alt="'+esc(o.name)+' — início" onerror="this.parentElement.classList.add(\'image-error\')"><img loading="lazy" src="'+src(1)+'" alt="'+esc(o.name)+' — fim" onerror="this.parentElement.classList.add(\'image-error\')"><span class="plan-image-fallback">Imagem externa indisponível. Confirma o movimento na Biblioteca.</span></div>'}
+    function setRows(group,choice,o,count){return Array.from({length:count},(_,s)=>{const v=gymSetValue(group,choice,s,o),key=gymSetKey(group,choice,s);return '<div class="set-row"><span class="set-index">'+(s+1)+'</span><div class="stepper"><button type="button" data-step="kg" data-delta="-2.5" data-log-key="'+esc(key)+'" aria-label="Diminuir peso">−</button><input type="number" min="0" step="0.5" value="'+v.kg+'" data-log-input="kg" data-log-key="'+esc(key)+'" aria-label="Peso em quilogramas"><button type="button" data-step="kg" data-delta="2.5" data-log-key="'+esc(key)+'" aria-label="Aumentar peso">＋</button></div><div class="stepper"><button type="button" data-step="reps" data-delta="-1" data-log-key="'+esc(key)+'" aria-label="Diminuir repetições">−</button><input type="number" min="1" step="1" value="'+v.reps+'" data-log-input="reps" data-log-key="'+esc(key)+'" aria-label="Número de repetições"><button type="button" data-step="reps" data-delta="1" data-log-key="'+esc(key)+'" aria-label="Aumentar repetições">＋</button></div><button class="set-done '+(v.done?'done':'')+'" type="button" data-set-done="'+esc(key)+'" aria-label="Marcar série como concluída">✓</button></div>'}).join('')}
+    function bindGymTracker(){document.querySelectorAll('[data-log-input]').forEach(input=>input.onchange=()=>{const key=input.dataset.logKey,gymDefault={kg:0,reps:10,done:false};gymLog[key]={...(gymLog[key]||gymDefault),[input.dataset.logInput]:Number(input.value)};saveGymLog()});document.querySelectorAll('[data-step]').forEach(b=>b.onclick=()=>{const key=b.dataset.logKey,field=b.dataset.step,input=document.querySelector('[data-log-input="'+field+'"][data-log-key="'+CSS.escape(key)+'"]'),next=Math.max(field==='reps'?1:0,Number(input.value)+Number(b.dataset.delta));input.value=next;input.dispatchEvent(new Event('change'))});document.querySelectorAll('[data-set-done]').forEach(b=>b.onclick=()=>{const key=b.dataset.setDone;gymLog[key]={...(gymLog[key]||{kg:0,reps:10}),done:!(gymLog[key]&&gymLog[key].done)};saveGymLog();b.classList.toggle('done',gymLog[key].done)})}
+    function renderGym(){const plan=gymPlans[gymState.plan],setCount=gymState.time===30?2:3,exerciseCount=plan.counts[gymState.time];document.querySelector('#gym-title').textContent=plan.title;document.querySelector('#gym-description').textContent=gymState.time+' min · '+exerciseCount+' exercícios · '+setCount+' séries por exercício · '+plan.description;document.querySelector('#gym-plan').value=gymState.plan;document.querySelector('#gym-time').value=String(gymState.time);document.querySelectorAll('[data-gym-plan]').forEach(b=>{const a=b.dataset.gymPlan===gymState.plan;b.classList.toggle('active',a);b.setAttribute('aria-pressed',String(a))});document.querySelector('#gym-exercises').innerHTML=plan.groups.slice(0,exerciseCount).map((key,i)=>{const g=gymGroups[key],stateKey=gymState.plan+'-'+key,choice=gymState.choices[stateKey]||0,o=g.options[choice],pair=String.fromCharCode(65+Math.floor(i/2))+(i%2+1);return '<article class="plan-exercise"><header class="plan-exercise-head"><span class="plan-number">'+String(i+1).padStart(2,'0')+'</span><div><span>'+esc(g.label)+'</span><strong>'+esc(o.name)+'</strong></div><span class="pair">Bloco '+pair+'</span></header><div class="plan-exercise-main"><div class="plan-photo"><label class="step" for="gym-choice-'+i+'">Alternativa · escolhe 1 de 3</label><select class="exercise-select" id="gym-choice-'+i+'" data-gym-choice="'+esc(stateKey)+'">'+g.options.map((x,j)=>'<option value="'+j+'" '+(j===choice?'selected':'')+'>'+esc(x.name)+' · '+esc(x.equipment)+'</option>').join('')+'</select>'+planPhoto(o)+'<div class="diagram-caption"><span>'+esc(o.equipment)+'</span><span>'+esc(o.reps)+'</span></div><p class="exercise-cue">'+esc(o.cue)+'</p></div><div class="set-tracker"><div class="set-tracker-head"><span>Série</span><span>kg</span><span>reps</span><span>feito</span></div>'+setRows(key,choice,o,setCount)+'<p class="set-note">Os valores ficam guardados neste dispositivo. Ajusta o peso à tua técnica e margem de 1–3 repetições.</p></div></div></article>'}).join('');document.querySelectorAll('[data-gym-choice]').forEach(s=>s.onchange=()=>{gymState.choices[s.dataset.gymChoice]=Number(s.value);renderGym()});bindGymTracker()}
+    document.querySelectorAll('[data-gym-plan]').forEach(b=>b.onclick=()=>{gymState.plan=b.dataset.gymPlan;renderGym()});
+    document.querySelector('#gym-plan').onchange=e=>{gymState.plan=e.target.value;renderGym()};
+    document.querySelector('#gym-time').onchange=e=>{gymState.time=Number(e.target.value);renderGym()};
+    let workoutSessions=[];try{workoutSessions=JSON.parse(localStorage.getItem('manelGymSessions')||'[]')}catch(e){workoutSessions=[]}
+    const saveSessions=()=>{try{localStorage.setItem('manelGymSessions',JSON.stringify(workoutSessions))}catch(e){}}
+    const formatSessionDate=iso=>new Intl.DateTimeFormat('pt-PT',{dateStyle:'short',timeStyle:'short'}).format(new Date(iso));
+    function currentWorkoutSnapshot(){const plan=gymPlans[gymState.plan],count=plan.counts[gymState.time],sets=gymState.time===30?2:3,log={};plan.groups.slice(0,count).forEach(group=>{const choice=gymState.choices[gymState.plan+'-'+group]||0;for(let s=0;s<sets;s++){const key=gymSetKey(group,choice,s),o=gymGroups[group].options[choice];log[key]={...gymSetValue(group,choice,s,o)}}});return{id:'session-'+Date.now(),savedAt:new Date().toISOString(),plan:gymState.plan,time:gymState.time,choices:{...gymState.choices},log}}
+    function renderWorkoutHistory(){document.querySelector('#history-count').textContent=workoutSessions.length;const status=document.querySelector('#save-status');if(workoutSessions[0])status.textContent='Última sessão: '+formatSessionDate(workoutSessions[0].savedAt);document.querySelector('#workout-history').innerHTML=workoutSessions.length?workoutSessions.slice(0,10).map(s=>{const sets=Object.values(s.log||{}),done=sets.filter(x=>x.done).length;return '<div class="history-row"><div><strong>'+esc(gymPlans[s.plan]?.title||s.plan)+'</strong><span>'+formatSessionDate(s.savedAt)+' · '+s.time+' min · '+done+'/'+sets.length+' séries concluídas</span></div><button type="button" data-load-session="'+esc(s.id)+'">Carregar</button></div>'}).join(''):'<p class="empty">Ainda não existem sessões gravadas.</p>';document.querySelectorAll('[data-load-session]').forEach(b=>b.onclick=()=>{const s=workoutSessions.find(x=>x.id===b.dataset.loadSession);if(!s)return;gymState.plan=s.plan;gymState.time=Number(s.time);gymState.choices={...(s.choices||{})};Object.assign(gymLog,s.log||{});saveGymLog();renderGym();document.querySelector('#save-status').textContent='Sessão de '+formatSessionDate(s.savedAt)+' carregada.';window.scrollTo({top:document.querySelector('#gym-plans-panel').offsetTop,behavior:'smooth'})})}
+    document.querySelector('#save-workout').onclick=()=>{workoutSessions=[currentWorkoutSnapshot(),...workoutSessions].slice(0,25);saveSessions();renderWorkoutHistory();document.querySelector('#save-status').textContent='Treino guardado agora.'};
+    document.querySelector('#export-workouts').onclick=()=>{const payload={version:1,exportedAt:new Date().toISOString(),gymLog,workoutSessions,gymChoices:gymState.choices,savedExercises:typeof savedExercises==='undefined'?[]:savedExercises};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='treinos-manel-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
+    document.querySelector('#import-workouts').onchange=e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const payload=JSON.parse(reader.result);if(!payload||payload.version!==1)throw new Error('Formato incompatível');gymLog=payload.gymLog||{};workoutSessions=Array.isArray(payload.workoutSessions)?payload.workoutSessions:[];gymState.choices=payload.gymChoices||{};if(Array.isArray(payload.savedExercises))savedExercises=payload.savedExercises;saveGymLog();saveSessions();saveExerciseList();renderGym();renderWorkoutHistory();renderLibrary();document.querySelector('#save-status').textContent='Cópia importada com sucesso.'}catch(err){document.querySelector('#save-status').textContent='Não foi possível importar este ficheiro.'}};reader.readAsText(file);e.target.value=''};
+    renderWorkoutHistory();
+    const exerciseLibrary=[
+      {id:'Barbell_Curl',name:'Curl com barra',muscle:'biceps',equipment:'Barra',reps:'3 × 8–12',tip:'Mantém os cotovelos junto ao tronco e evita balançar.',guide:'barbell-curl'},
+      {id:'Alternate_Hammer_Curl',name:'Curl martelo alternado',muscle:'biceps',equipment:'Halteres',reps:'3 × 10–12 por lado',tip:'Palmas viradas para dentro; move apenas o antebraço.',guide:'hammer-curl'},
+      {id:'Alternate_Incline_Dumbbell_Curl',name:'Curl inclinado com halteres',muscle:'biceps',equipment:'Halteres',reps:'3 × 8–12',tip:'Mantém o ombro estável e controla toda a descida.',guide:'incline-dumbbell-curl'},
+      {id:'Barbell_Bench_Press_-_Medium_Grip',name:'Supino plano com barra',muscle:'chest',equipment:'Barra',reps:'3 × 6–10',tip:'Escápulas apoiadas, pés firmes e antebraços verticais.',guide:'barbell-bench-press'},
+      {id:'Dumbbell_Bench_Press',name:'Supino com halteres',muscle:'chest',equipment:'Halteres',reps:'3 × 8–12',tip:'Desce com controlo e não batas os halteres no topo.',guide:'dumbbell-bench-press'},
+      {id:'Cable_Crossover',name:'Crossover no cabo',muscle:'chest',equipment:'Cabo',reps:'3 × 10–15',tip:'Mantém o tronco estável e aproxima as mãos num arco controlado.',guide:'cable-crossover'},
+      {id:'Wide-Grip_Lat_Pulldown',name:'Puxada frontal aberta',muscle:'back',equipment:'Cabo',reps:'3 × 8–12',tip:'Puxa para a parte superior do peito sem levar a barra atrás da cabeça.',guide:'wide-grip-pulldown'},
+      {id:'Seated_Cable_Rows',name:'Remada sentada no cabo',muscle:'back',equipment:'Cabo',reps:'3 × 8–12',tip:'Conduz os cotovelos para trás sem balançar o tronco.',guide:'seated-cable-row'},
+      {id:'One-Arm_Dumbbell_Row',name:'Remada unilateral com haltere',muscle:'back',equipment:'Halteres',reps:'3 × 8–12 por lado',tip:'Mantém a coluna estável e puxa o cotovelo na direção da anca.',guide:'dumbbell-bent-over-row-single-arm'},
+      {id:'Triceps_Pushdown',name:'Tríceps na polia com barra',muscle:'triceps',equipment:'Cabo',reps:'3 × 10–15',tip:'Cotovelos fixos; estende sem mover os ombros.',guide:'triceps-pressdown'},
+      {id:'Triceps_Pushdown_-_Rope_Attachment',name:'Tríceps na polia com corda',muscle:'triceps',equipment:'Cabo',reps:'3 × 10–15',tip:'Separa as pontas da corda no final sem abrir os cotovelos.',guide:'cable-rope-pushdown'},
+      {id:'Triceps_Overhead_Extension_with_Rope',name:'Extensão de tríceps acima da cabeça',muscle:'triceps',equipment:'Cabo',reps:'3 × 10–15',tip:'Controla as costelas e mantém os cotovelos apontados em frente.',guide:'dumbbell-overhead-triceps-extension'},
+      {id:'Dumbbell_Shoulder_Press',name:'Press de ombros com halteres',muscle:'shoulders',equipment:'Halteres',reps:'3 × 8–12',tip:'Costas apoiadas e punhos alinhados sobre os cotovelos.',guide:'dumbbell-shoulder-press'},
+      {id:'Side_Lateral_Raise',name:'Elevação lateral',muscle:'shoulders',equipment:'Halteres',reps:'3 × 12–20',tip:'Carga leve, cotovelos suaves e sem encolher os ombros.',guide:'dumbbell-lateral-raise'},
+      {id:'Arnold_Dumbbell_Press',name:'Press Arnold',muscle:'shoulders',equipment:'Halteres',reps:'3 × 8–12',tip:'Roda os braços de forma controlada e evita arquear a lombar.',guide:'arnold-press'},
+      {id:'Leg_Press',name:'Leg press',muscle:'legs',equipment:'Máquina',reps:'3 × 8–12',tip:'Mantém a bacia apoiada e os joelhos alinhados com os pés.',guide:'leg-press'},
+      {id:'Barbell_Squat',name:'Agachamento com barra',muscle:'legs',equipment:'Barra',reps:'3 × 6–10',tip:'Pé inteiro apoiado, tronco firme e amplitude que controles.',guide:'barbell-squat'},
+      {id:'Goblet_Squat',name:'Goblet squat',muscle:'legs',equipment:'Halteres',reps:'3 × 10–15',tip:'Segura o haltere junto ao peito e acompanha a linha dos pés com os joelhos.',guide:'goblet-squat'},
+      {id:'Romanian_Deadlift',name:'Peso morto romeno',muscle:'posterior',equipment:'Barra',reps:'3 × 8–12',tip:'Empurra a anca para trás e mantém a barra perto das pernas.',guide:'barbell-romanian-deadlift'},
+      {id:'Barbell_Hip_Thrust',name:'Hip thrust com barra',muscle:'posterior',equipment:'Barra',reps:'3 × 8–12',tip:'Pausa no topo sem hiperestender a zona lombar.',guide:'barbell-hip-thrust'},
+      {id:'Butt_Lift_(Bridge)',name:'Ponte de glúteos',muscle:'posterior',equipment:'Peso corporal',reps:'3 × 12–20',tip:'Sobe através dos calcanhares e termina com a bacia neutra.',guide:'glute-bridge'},
+      {id:'Ab_Crunch_Machine',name:'Crunch na máquina',muscle:'core',equipment:'Máquina',reps:'3 × 10–15',tip:'Aproxima costelas e bacia sem puxar apenas com os braços.',guide:'crunch-machine'},
+      {id:'Cable_Crunch',name:'Crunch no cabo',muscle:'core',equipment:'Cabo',reps:'3 × 10–15',tip:'Flete o tronco de forma controlada mantendo a anca estável.',guide:'rope-ab-pulldown'},
+      {id:'Plank',name:'Prancha',muscle:'core',equipment:'Peso corporal',reps:'3 × 30–60 s',tip:'Mantém cabeça, tronco e bacia alinhados sem prender a respiração.',guide:'plank'}
+    ];
+    const muscleNames={biceps:'Bíceps',chest:'Peito',back:'Costas',triceps:'Tríceps',shoulders:'Ombros',legs:'Pernas',posterior:'Glúteos e posteriores',core:'Abdominais'};
+    const libraryState={muscle:'biceps',equipment:'all',search:''};
+    let savedExercises=[];try{savedExercises=JSON.parse(localStorage.getItem('manelGymExercises')||'[]')}catch(e){savedExercises=[]}
+    const saveExerciseList=()=>{try{localStorage.setItem('manelGymExercises',JSON.stringify(savedExercises))}catch(e){}}
+    function exerciseImage(id,n){return 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/'+encodeURIComponent(id).replace(/%2F/g,'/')+'/'+n+'.jpg'}
+    function renderMyList(){const list=exerciseLibrary.filter(x=>savedExercises.includes(x.id));document.querySelector('#my-list-count').textContent=list.length;document.querySelector('#my-list-items').innerHTML=list.length?list.map(x=>'<div class="list-row"><div><strong>'+esc(x.name)+'</strong><span>'+esc(muscleNames[x.muscle])+' · '+esc(x.reps)+'</span></div><button type="button" data-remove-exercise="'+esc(x.id)+'" aria-label="Remover '+esc(x.name)+'">×</button></div>').join(''):'<p class="empty">Ainda não adicionaste exercícios.</p>';document.querySelectorAll('[data-remove-exercise]').forEach(b=>b.onclick=()=>{savedExercises=savedExercises.filter(id=>id!==b.dataset.removeExercise);saveExerciseList();renderLibrary()})}
+    function renderLibrary(){const q=libraryState.search.toLowerCase().trim(),list=exerciseLibrary.filter(x=>(libraryState.muscle==='all'||x.muscle===libraryState.muscle)&&(libraryState.equipment==='all'||x.equipment===libraryState.equipment)&&(!q||(x.name+' '+x.equipment+' '+muscleNames[x.muscle]).toLowerCase().includes(q)));document.querySelector('#library-count').textContent=list.length+' exercícios';document.querySelectorAll('[data-muscle]').forEach(b=>{const a=b.dataset.muscle===libraryState.muscle;b.classList.toggle('active',a);b.setAttribute('aria-pressed',String(a))});document.querySelector('#exercise-library').innerHTML=list.length?list.map(x=>{const added=savedExercises.includes(x.id),guide='https://www.simplyfitness.com/pages/'+encodeURIComponent(x.guide);return '<article class="library-card"><div class="photo-pair"><span class="start">INÍCIO</span><span class="finish">FIM</span><img loading="lazy" src="'+exerciseImage(x.id,0)+'" alt="'+esc(x.name)+' — posição inicial"><img loading="lazy" src="'+exerciseImage(x.id,1)+'" alt="'+esc(x.name)+' — posição final"></div><div class="library-body"><div class="meta"><span>'+esc(muscleNames[x.muscle])+'</span><span>'+esc(x.equipment)+'</span></div><h3>'+esc(x.name)+'</h3><p><strong>'+esc(x.reps)+'</strong><br>'+esc(x.tip)+'</p><div class="library-actions"><button type="button" class="'+(added?'added':'')+'" data-add-exercise="'+esc(x.id)+'">'+(added?'✓ Na lista':'+ Adicionar')+'</button><a href="'+guide+'" target="_blank" rel="noopener noreferrer">Guia ilustrado ↗</a></div></div></article>'}).join(''):'<p class="empty">Não encontrei exercícios com estes filtros.</p>';document.querySelectorAll('[data-add-exercise]').forEach(b=>b.onclick=()=>{const id=b.dataset.addExercise;savedExercises=savedExercises.includes(id)?savedExercises.filter(x=>x!==id):[...savedExercises,id];saveExerciseList();renderLibrary()});renderMyList()}
+    document.querySelectorAll('[data-muscle]').forEach(b=>b.onclick=()=>{libraryState.muscle=b.dataset.muscle;renderLibrary()});
+    document.querySelector('#exercise-search').oninput=e=>{libraryState.search=e.target.value;renderLibrary()};
+    document.querySelector('#exercise-equipment').onchange=e=>{libraryState.equipment=e.target.value;renderLibrary()};
+    document.querySelector('#clear-exercise-list').onclick=()=>{savedExercises=[];saveExerciseList();renderLibrary()};
+    document.querySelectorAll('[data-gym-mode]').forEach(b=>b.onclick=()=>{const library=b.dataset.gymMode==='library';document.querySelector('#gym-plans-panel').hidden=library;document.querySelector('#gym-library-panel').hidden=!library;document.querySelectorAll('[data-gym-mode]').forEach(x=>{const a=x===b;x.classList.toggle('active',a);x.setAttribute('aria-pressed',String(a))});if(library)renderLibrary()});
+    document.querySelectorAll('[data-view]').forEach(button=>button.onclick=()=>{document.querySelectorAll('[data-view]').forEach(x=>{x.classList.toggle('active',x===button);x.setAttribute('aria-pressed',String(x===button))});document.querySelector('#training-view').hidden=button.dataset.view!=='training';document.querySelector('#gym-view').hidden=button.dataset.view!=='gym';document.querySelector('#food-view').hidden=button.dataset.view!=='food';if(button.dataset.view==='gym')renderGym();window.scrollTo({top:0,behavior:'smooth'})});
+    function render(){
+      const d=data[day];
+      document.documentElement.style.setProperty('--active',d.color);
+      document.querySelector('#day-title').textContent=d.title;
+      document.querySelector('#day-description').textContent=d.description;
+      document.querySelector('#category-guide').textContent=d.guide;
+      const list=d.items.filter(x=>(level==='Todos'||x[3]===level)&&(!duration||x[2]<=duration));
+      document.querySelector('#results-count').textContent=list.length+' de '+d.items.length+' opções';
+      document.querySelectorAll('[data-day]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.day===day)));
+      document.querySelectorAll('[data-level]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.level===level)));
+      document.querySelector('#workouts').innerHTML=list.length?list.map((x,i)=>{
+        const url='https://www.youtube.com/watch?v='+encodeURIComponent(x[5]);
+        return '<article class="card"><div class="visual"><span class="num">'+String(i+1).padStart(2,'0')+'</span><a class="play" href="'+url+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir '+esc(x[0])+'">▶</a></div><div class="body"><div class="meta"><span>≈ '+x[2]+' min</span><span>'+esc(x[3])+'</span></div><h3>'+esc(x[0])+'</h3><p class="creator">'+esc(x[1])+'</p><p class="note">'+esc(x[4])+'</p><a class="link" href="'+url+'" target="_blank" rel="noopener noreferrer">Acompanhar sessão <span>↗</span></a></div></article>';
+      }).join(''):'<p class="empty">Sem vídeos com estes filtros. Escolhe outra duração ou dificuldade.</p>';
+    }
+    document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{
+      day=b.dataset.day;level='Todos';duration=0;
+      document.querySelector('#duration').value='0';
+      document.querySelectorAll('[data-day]').forEach(x=>x.classList.toggle('active',x===b));
+      document.querySelectorAll('[data-level]').forEach(x=>x.classList.toggle('active',x.dataset.level==='Todos'));
+      render();
+    });
+    document.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{level=b.dataset.level;document.querySelectorAll('[data-level]').forEach(x=>x.classList.toggle('active',x===b));render()});
+    document.querySelector('#duration').onchange=e=>{duration=Number(e.target.value);render()};
+    document.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.view==='training')));
+    render();
+  </script>
+  <script>
+    const marianaData={"cardio":{"color":"var(--violet)","description":"Condição cardiovascular · complemento, não o foco para ganhar músculo.","guide":"Escolhe 1 sessão confortável nos dias extra, sem prejudicar a recuperação da força. Começa por baixo impacto. Cardio não substitui resistência progressiva para ganhar músculo, e não é preciso terminar exausta. Regula o ritmo para conseguires falar frases nos dias leves.","items":[["Cardio iniciante sem saltos","MadFit",15,"Iniciante","Baixo impacto e pouco espaço.","3oitzTfujXs","Sem material"],["Cardio para principiantes","MadFit",15,"Iniciante","Sessão acompanhada de cardio em casa.","VWj8ZxCxrYk","Sem material"],["Cardio ao ritmo da música","MadFit",15,"Intermédio","Sessão de pé, com componente de coordenação.","Uci74Cq5Q9A","Sem material"],["Cardio aeróbico ao ritmo da música","MadFit",20,"Intermédio","Coordenação e condição física.","DMAxIrCAAZ0","Sem material"],["Cardio aeróbico — sessão longa","MadFit",30,"Intermédio","Sessão cardiovascular ao ritmo da música.","vI5MzT-wIjs","Sem material"]],"title":"Cardio"},"core":{"color":"var(--violet)","description":"Abdominais, estabilidade e controlo do tronco.","guide":"Uma sessão de 15–20 minutos já é um bloco substancial de core: não precisas de fazer várias de seguida nem todos os dias. Começa com 1–2 sessões específicas por semana, contando o core de total/upper body. Reduz amplitude ou pausa se perderes controlo da lombar. Não há perda de gordura localizada.","items":[["Core completo — 15 minutos","MadFit",15,"Intermédio","Sessão global de abdominais no tapete.","glxrwC9zsHY","Sem material"],["Core sem repetições","MadFit",15,"Intermédio","Outra sequência de core, sem material.","Cnmy08JgakM","Sem material"],["Core de pé com cardio leve","MadFit",15,"Iniciante","Alternativa de pé · componente cardiovascular e abdominal.","DtXZy7yVt-g","Sem material"],["Abdominais e glúteos no chão","MadFit",15,"Intermédio","Sessão mista · sem agachamentos nem afundos.","fQJXQI5iEqE","Sem material"],["Core completo intenso","MadFit",20,"Avançado","Opção exigente: pausa ou escolhe outra se necessário.","H765nVNbUsA","Sem material"]],"title":"Abs & core"},"lower":{"color":"var(--lime)","description":"Pernas e glúteos · opções globais e sessões focadas nos glúteos.","guide":"Alterna sessões de pernas completas e de glúteos, sem substituir sempre o treino global por isolamento. Progride de agachamentos, afundos e pontes bilaterais para variantes mais difíceis, se mantiveres técnica e conforto. Quando o peso corporal ficar fácil, carga adicional pode ajudar.","items":[["Pernas e glúteos — 20 minutos","MadFit",20,"Intermédio","Sessão de membros inferiores com peso corporal.","G_26U5DIaRg","Sem material"],["Pernas e glúteos — 15 minutos","MadFit",15,"Intermédio","Sessão de pernas sem equipamento.","Cq8xjqDLPKg","Sem material"],["Pernas de pé, estilo Pilates","MadFit",15,"Iniciante","Sem saltos · resistência e controlo.","wgTVkCWNRxk","Sem material"],["Foco glúteos — 20 minutos","MadFit",20,"Intermédio","Sessão focalizada nos glúteos, sem equipamento.","Z7E33fofQkQ","Sem material"],["Foco glúteos — outra sequência","MadFit",20,"Intermédio","Outra opção para alternar, não somar ao treino anterior.","5KYAVG7BWAU","Sem material"]],"title":"Lower body"},"mobility":{"color":"var(--violet)","description":"Mobilidade suave e flexibilidade · dias leves ou depois do treino.","guide":"Estas rotinas são sobretudo alongamentos e mobilidade suave. Mantém amplitudes confortáveis, sem forçar nem provocar dor. Não substituem força. Antes da sessão principal, prefere aquecimento dinâmico; guarda alongamentos prolongados para depois ou para um dia separado.","items":[["Corpo inteiro — 15 minutos","MadFit",15,"Iniciante","Sessão suave para um dia leve.","fjfThtANcEE","Sem material"],["Alongamento de corpo inteiro — 15 minutos","MadFit",15,"Iniciante","Outra rotina suave de corpo inteiro.","KCjIz9xurqk","Sem material"],["Alongamento completo — 20 minutos","MadFit",20,"Iniciante","Flexibilidade e relaxamento; sem forçar amplitude.","DYGfwPppgO4","Sem material"],["Flexibilidade para principiantes","MadFit",20,"Iniciante","Rotina acessível, ajustada ao teu conforto.","wUHK87X3lkI","Sem material"],["Alongamento e yoga suave","MadFit",20,"Iniciante","Movimento suave de corpo inteiro.","sTANio_2E0Q","Sem material"]],"title":"Mobilidade"},"total":{"color":"var(--lime)","description":"Corpo inteiro · a base para ganhar força e músculo.","guide":"Escolhe uma sessão principal. Começa pela opção mais acessível e pausa sempre que necessário. Procura trabalhar pernas, glúteos, peito e core com esforço progressivo. O treino sem material tem limitações nos movimentos de puxar para costas e bíceps.","items":[["Força total com adaptações","Juice & Toya",30,"Intermédio","Sessão principal · variantes mais fáceis disponíveis.","9FBIaqr7TjQ","Sem material"],["Força total sem repetições","Juice & Toya",20,"Intermédio","Sessão principal · faz pausas extra se necessário.","Q2cMMnUuKYQ","Sem material"],["Corpo inteiro em casa","MadFit",20,"Intermédio","Sessão principal · adapta o ritmo à tua capacidade.","uyFjMupI5B0","Sem material"],["Corpo inteiro em 20 minutos","BullyJuice",20,"Intermédio","Sessão principal · treino global com peso corporal.","oAPCPjnU1wA","Sem material"],["Corpo inteiro em pouco espaço","MadFit",30,"Intermédio","Sessão principal sem equipamento; adapta o ritmo.","73NEi4HzHPs","Sem material"]],"title":"Total body"},"upper":{"color":"var(--coral)","description":"Peito, costas, braços e ombros · cinco opções bodyweight e uma com halteres.","guide":"As flexões e pranchas treinam peito, tríceps e ombros; os movimentos posteriores sem carga ajudam no controlo, mas não equivalem a remadas com peso. Começa com joelhos apoiados nas flexões, se necessário. A sessão com halteres é opcional no plano e exige pesos: usa o filtro Material para a encontrar.","items":[["Tronco para principiantes","MadFit",15,"Iniciante","Ponto de partida para braços, peito, costas e ombros.","BMLhJvhWZ0E","Sem material"],["Tronco completo em 15 minutos","MadFit",15,"Intermédio","Peito, costas e braços · sessão mista.","ESkI_WR1qqc","Sem material"],["Tronco completo — 15 minutos","Pamela Reif",15,"Intermédio","Sessão mista para a parte superior.","_bpnk9mxDk0","Sem material"],["Tronco e abdominais","Pamela Reif",30,"Avançado","Sessão mais longa · já inclui core.","c01hlF_EdRk","Sem material"],["Costas e core sem repetições","growingannanas",15,"Intermédio","Sessão mista · baixo impacto, sem pesos.","aPF7rUv0CZs","Sem material"],["Tronco com halteres — opção extra","fitbymik",20,"Intermédio","Braços, abdominais, peito e costas. Requer halteres; não é uma sessão bodyweight.","Iiy8f4VuA-M","Halteres"]],"title":"Upper body"}};
+    const marianaState={category:'total',level:'Todos',duration:30,equipment:'Sem material'};
+    function renderMariana(){
+      const d=marianaData[marianaState.category];
+      document.documentElement.style.setProperty('--active',d.color);
+      document.querySelector('#mariana-title').textContent=d.title;
+      document.querySelector('#mariana-description').textContent=d.description;
+      document.querySelector('#mariana-guide').textContent=d.guide;
+      const list=d.items.filter(x=>(marianaState.level==='Todos'||x[3]===marianaState.level)&&x[2]<=marianaState.duration&&(marianaState.equipment==='Todos'||x[6]===marianaState.equipment));
+      document.querySelector('#mariana-count').textContent=list.length+' de '+d.items.length+' opções';
+      document.querySelectorAll('[data-mday]').forEach(x=>{const active=x.dataset.mday===marianaState.category;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});
+      document.querySelectorAll('[data-mlevel]').forEach(x=>{const active=x.dataset.mlevel===marianaState.level;x.classList.toggle('active',active);x.setAttribute('aria-pressed',String(active))});
+      document.querySelector('#mariana-workouts').innerHTML=list.length?list.map((x,i)=>{
+        const url='https://www.youtube.com/watch?v='+encodeURIComponent(x[5]);
+        return '<article class="card"><div class="visual"><span class="num">'+String(i+1).padStart(2,'0')+'</span><a class="play" href="'+url+'" target="_blank" rel="noopener noreferrer" aria-label="Abrir '+esc(x[0])+'">▶</a></div><div class="body"><div class="meta"><span>≈ '+x[2]+' min</span><span>'+esc(x[3])+'</span></div><h3>'+esc(x[0])+'</h3><p class="creator">'+esc(x[1])+'</p><span class="equipment-label '+(x[6]==='Halteres'?'weights':'')+'">'+esc(x[6])+'</span><p class="note">'+esc(x[4])+'</p><a class="link" href="'+url+'" target="_blank" rel="noopener noreferrer">Acompanhar sessão <span>↗</span></a></div></article>';
+      }).join(''):'<p class="empty">Sem vídeos com estes filtros. Experimenta outra duração, dificuldade ou material. A opção com halteres está em Upper body.</p>';
+    }
+    document.querySelectorAll('[data-mday]').forEach(b=>b.onclick=()=>{
+      Object.assign(marianaState,{category:b.dataset.mday,level:'Todos',duration:30,equipment:'Sem material'});
+      document.querySelector('#mariana-duration').value='30';
+      document.querySelector('#mariana-equipment').value='Sem material';
+      renderMariana();
+    });
+    document.querySelectorAll('[data-mlevel]').forEach(b=>b.onclick=()=>{marianaState.level=b.dataset.mlevel;renderMariana()});
+    document.querySelector('#mariana-duration').onchange=e=>{marianaState.duration=Number(e.target.value);renderMariana()};
+    document.querySelector('#mariana-equipment').onchange=e=>{marianaState.equipment=e.target.value;renderMariana()};
+    document.querySelectorAll('[data-mview]').forEach(b=>b.onclick=()=>{
+      document.querySelector('#mariana-training').hidden=b.dataset.mview!=='training';
+      document.querySelector('#mariana-food').hidden=b.dataset.mview!=='food';
+      document.querySelectorAll('[data-mview]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+    document.querySelectorAll('[data-profile]').forEach(b=>b.onclick=()=>{
+      const isMariana=b.dataset.profile==='mariana';
+      document.querySelector('#manel-profile').hidden=isMariana;
+      document.querySelector('#mariana-profile').hidden=!isMariana;
+      document.querySelectorAll('[data-profile]').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-pressed',String(x===b))});
+      if(isMariana)renderMariana();else render();
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
